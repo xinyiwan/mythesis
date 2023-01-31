@@ -1,0 +1,6 @@
+*.aux
+*.bcf
+*.xdv
+*.synctex.gz
+*.pdf
+*.run.xml

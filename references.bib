@@ -1,4 +1,3 @@
-
 @article{behrensCharacterizationPropagationUncertainty2003,
   title = {Characterization and Propagation of Uncertainty in Diffusion-Weighted {{MR}} Imaging},
   author = {Behrens, T.e.j. and Woolrich, M.w. and Jenkinson, M. and Johansen-Berg, H. and Nunes, R.g. and Clare, S. and Matthews, P.m. and Brady, J.m. and Smith, S.m.},
@@ -16,6 +15,22 @@
   keywords = {diffusion-weighted MRI,probability density functions},
   annotation = {\_eprint: https://onlinelibrary.wiley.com/doi/pdf/10.1002/mrm.10609},
   file = {/Users/xinyi/Zotero/storage/SW8ANF2R/Behrens et al. - 2003 - Characterization and propagation of uncertainty in.pdf;/Users/xinyi/Zotero/storage/U5BR522E/mrm.html}
+}
+
+@article{consagraOptimizedDiffusionImaging2022,
+  title = {Optimized {{Diffusion Imaging}} for {{Brain Structural Connectome Analysis}}},
+  author = {Consagra, William and Venkataraman, Arun and Zhang, Zhengwu},
+  date = {2022-08},
+  journaltitle = {IEEE Transactions on Medical Imaging},
+  volume = {41},
+  number = {8},
+  pages = {2118--2129},
+  issn = {1558-254X},
+  doi = {10.1109/TMI.2022.3156868},
+  abstract = {High angular resolution diffusion imaging (HARDI) is a type of diffusion magnetic resonance imaging (dMRI) that measures diffusion signals on a sphere in q-space. It has been widely used in data acquisition for human brain structural connectome analysis. To more accurately estimate the structural connectome, dense samples in q-space are often acquired, potentially resulting in long scanning times and logistical challenges. This paper proposes a statistical method to select q-space directions optimally and estimate the local diffusion function from sparse observations. The proposed approach leverages relevant historical dMRI data to calculate a prior distribution to characterize local diffusion variability in each voxel in a template space. For a new subject to be scanned, the priors are mapped into the subject-specific coordinate and used to help select the best q-space samples. Simulation studies demonstrate big advantages over the existing HARDI sampling and analysis framework. We also applied the proposed method to the Human Connectome Project data and a dataset of aging adults with mild cognitive impairment. The results indicate that with very few q-space samples (e.g., 15 or 20), we can recover structural brain networks comparable to the ones estimated from 60 or more diffusion directions with the existing methods.},
+  eventtitle = {{{IEEE Transactions}} on {{Medical Imaging}}},
+  keywords = {Brain modeling,diffusion MRI,Diffusion tensor imaging,diffusion vector selection,Eigenvalues and eigenfunctions,Estimation,Harmonic analysis,Image reconstruction,sparse q-space samples,structural connectome,Transforms},
+  file = {/Users/xinyi/Zotero/storage/IPZZ5T95/Consagra et al. - 2022 - Optimized Diffusion Imaging for Brain Structural C.pdf;/Users/xinyi/Zotero/storage/YWRYPJ3K/9727199.html}
 }
 
 @article{costabileCurrentApplicationsDiffusion2019,
@@ -52,6 +67,25 @@
   abstract = {Tractography is a class of algorithms aiming at in vivo mapping the major neuronal pathways in the white matter from diffusion magnetic resonance imaging (MRI) data. These techniques offer a powerful tool to noninvasively investigate at the macroscopic scale the architecture of the neuronal connections of the brain. However, unfortunately, the reconstructions recovered with existing tractography algorithms are not really quantitative even though diffusion MRI is a quantitative modality by nature. As a matter of fact, several techniques have been proposed in recent years to estimate, at the voxel level, intrinsic microstructural features of the tissue, such as axonal density and diameter, by using multicompartment models. In this paper, we present a novel framework to reestablish the link between tractography and tissue microstructure. Starting from an input set of candidate fiber-tracts, which are estimated from the data using standard fiber-tracking techniques, we model the diffusion MRI signal in each voxel of the image as a linear combination of the restricted and hindered contributions generated in every location of the brain by these candidate tracts. Then, we seek for the global weight of each of them, i.e., the effective contribution or volume, such that they globally fit the measured signal at best. We demonstrate that these weights can be easily recovered by solving a global convex optimization problem and using efficient algorithms. The effectiveness of our approach has been evaluated both on a realistic phantom with known ground-truth and in vivo brain data. Results clearly demonstrate the benefits of the proposed formulation, opening new perspectives for a more quantitative and biologically plausible assessment of the structural connectivity of the brain.},
   langid = {english},
   file = {/Users/xinyi/Zotero/storage/5LL7D4LU/Daducci et al. - 2015 - COMMIT Convex Optimization Modeling for Microstru.pdf}
+}
+
+@article{dhollanderFixelbasedAnalysisDiffusion2021,
+  title = {Fixel-Based {{Analysis}} of {{Diffusion MRI}}: {{Methods}}, {{Applications}}, {{Challenges}} and {{Opportunities}}},
+  shorttitle = {Fixel-Based {{Analysis}} of {{Diffusion MRI}}},
+  author = {Dhollander, Thijs and Clemente, Adam and Singh, Mervyn and Boonstra, Frederique and Civier, Oren and Duque, Juan Dominguez and Egorova, Natalia and Enticott, Peter and Fuelscher, Ian and Gajamange, Sanuji and Genc, Sila and Gottlieb, Elie and Hyde, Christian and Imms, Phoebe and Kelly, Claire and Kirkovski, Melissa and Kolbe, Scott and Liang, Xiaoyun and Malhotra, Atul and Mito, Remika and Poudel, Govinda and Silk, Tim J. and Vaughan, David N. and Zanin, Julien and Raffelt, David and Caeyenberghs, Karen},
+  date = {2021-11-01},
+  journaltitle = {NeuroImage},
+  shortjournal = {NeuroImage},
+  volume = {241},
+  pages = {118417},
+  issn = {1053-8119},
+  doi = {10.1016/j.neuroimage.2021.118417},
+  url = {https://www.sciencedirect.com/science/article/pii/S1053811921006923},
+  urldate = {2023-01-31},
+  abstract = {Diffusion MRI has provided the neuroimaging community with a powerful tool to acquire in-vivo data sensitive to microstructural features of white matter, up to 3 orders of magnitude smaller than typical voxel sizes. The key to extracting such valuable information lies in complex modelling techniques, which form the link between the rich diffusion MRI data and various metrics related to the microstructural organization. Over time, increasingly advanced techniques have been developed, up to the point where some diffusion MRI models can now provide access to properties specific to individual fibre populations in each voxel in the presence of multiple “crossing” fibre pathways. While highly valuable, such fibre-specific information poses unique challenges for typical image processing pipelines and statistical analysis. In this work, we review the “Fixel-Based Analysis” (FBA) framework, which implements bespoke solutions to this end. It has recently seen a stark increase in adoption for studies of both typical (healthy) populations as well as a wide range of clinical populations. We describe the main concepts related to Fixel-Based Analyses, as well as the methods and specific steps involved in a state-of-the-art FBA pipeline, with a focus on providing researchers with practical advice on how to interpret results. We also include an overview of the scope of all current FBA studies, categorized across a broad range of neuro-scientific domains, listing key design choices and summarizing their main results and conclusions. Finally, we critically discuss several aspects and challenges involved with the FBA framework, and outline some directions and future opportunities.},
+  langid = {english},
+  keywords = {Diffusion MRI,Fibre density,Fibre-bundle cross-section,Fixel,Fixel-Based Analysis,Microstructure,Statistical analysis,White matter},
+  file = {/Users/xinyi/Zotero/storage/P8PBMY7T/Dhollander et al. - 2021 - Fixel-based Analysis of Diffusion MRI Methods, Ap.pdf;/Users/xinyi/Zotero/storage/53MTXWIE/S1053811921006923.html}
 }
 
 @article{fillardQuantitativeEvaluation102011,
@@ -132,7 +166,7 @@
   file = {/Users/xinyi/Zotero/storage/Q687S73F/Hagmann et al. - 2010 - MR connectomics Principles and challenges.pdf}
 }
 
-@misc{hainAssessingStreamlinePlausibility2022a,
+@misc{hainAssessingStreamlinePlausibility2022,
   title = {Assessing {{Streamline Plausibility Through Randomized Iterative Spherical-Deconvolution Informed Tractogram Filtering}}},
   author = {Hain, Antonia and Jörgens, Daniel and Moreno, Rodrigo},
   date = {2022-05-10},
@@ -142,12 +176,31 @@
   primaryclass = {cs},
   publisher = {{arXiv}},
   url = {http://arxiv.org/abs/2205.04843},
-  urldate = {2022-10-06},
-  abstract = {Tractography has become an indispensable part of brain connectivity studies. However, it is currently facing problems with reliability. In particular, a substantial amount of nerve fiber reconstructions (streamlines) in tractograms produced by state-of-the-art tractography methods are anatomically implausible. To address this problem, tractogram filtering methods have been developed to remove faulty connections in a postprocessing step. This study takes a closer look at one such method, Spherical-deconvolution Informed Filtering of Tractograms (SIFT), which uses a global optimization approach to improve the agreement between the remaining streamlines after filtering and the underlying diffusion magnetic resonance imaging data. SIFT is not suitable to judge the plausibility of individual streamlines since its results depend on the size and composition of the surrounding tractogram. To tackle this problem, we propose applying SIFT to randomly selected tractogram subsets in order to retrieve multiple assessments for each streamline. This approach makes it possible to identify streamlines with very consistent filtering results, which were used as pseudo ground truths for training classifiers. The trained classifier is able to distinguish the obtained groups of plausible and implausible streamlines with accuracy above 80\%.},
+  urldate = {2023-01-30},
+  abstract = {Tractography has become an indispensable part of brain connectivity studies. However, it is currently facing problems with reliability. In particular, a substantial amount of nerve fiber reconstructions (streamlines) in tractograms produced by state-of-the-art tractography methods are anatomically implausible. To address this problem, tractogram filtering methods have been developed to remove faulty connections in a postprocessing step. This study takes a closer look at one such method, \textbackslash textit\{Spherical-deconvolution Informed Filtering of Tractograms\} (SIFT), which uses a global optimization approach to improve the agreement between the remaining streamlines after filtering and the underlying diffusion magnetic resonance imaging data. SIFT is not suitable to judge the plausibility of individual streamlines since its results depend on the size and composition of the surrounding tractogram. To tackle this problem, we propose applying SIFT to randomly selected tractogram subsets in order to retrieve multiple assessments for each streamline. This approach makes it possible to identify streamlines with very consistent filtering results, which were used as pseudo ground truths for training classifiers. The trained classifier is able to distinguish the obtained groups of plausible and implausible streamlines with accuracy above 80\%. The software code used in the paper and pretrained weights of the classifier are distributed freely via the Github repository https://github.com/djoerch/randomised\_filtering.},
   archiveprefix = {arXiv},
-  langid = {english},
   keywords = {68T07; 68U10; 92C55; 94A12,Computer Science - Artificial Intelligence,Computer Science - Computer Vision and Pattern Recognition,I.4.10,I.4.7,I.5,J.3},
-  file = {/Users/xinyi/Zotero/storage/AUL82235/Hain et al. - 2022 - Assessing Streamline Plausibility Through Randomiz.pdf}
+  file = {/Users/xinyi/Zotero/storage/6KT6CTFT/Hain et al. - 2022 - Assessing Streamline Plausibility Through Randomiz.pdf;/Users/xinyi/Zotero/storage/3IHL7KKZ/2205.html}
+}
+
+@article{hanRayTracingGeneralized2019a,
+  title = {Ray {{Tracing Generalized Tube Primitives}}: {{Method}} and {{Applications}}},
+  shorttitle = {Ray {{Tracing Generalized Tube Primitives}}},
+  author = {Han, Mengjiao and Wald, Ingo and Usher, Will and Wu, Qi and Wang, Feng and Pascucci, Valerio and Hansen, Charles D. and Johnson, Chris R.},
+  date = {2019},
+  journaltitle = {Computer Graphics Forum},
+  volume = {38},
+  number = {3},
+  pages = {467--478},
+  issn = {1467-8659},
+  doi = {10.1111/cgf.13703},
+  url = {https://onlinelibrary.wiley.com/doi/abs/10.1111/cgf.13703},
+  urldate = {2023-01-17},
+  abstract = {We present a general high-performance technique for ray tracing generalized tube primitives. Our technique efficiently supports tube primitives with fixed and varying radii, general acyclic graph structures with bifurcations, and correct transparency with interior surface removal. Such tube primitives are widely used in scientific visualization to represent diffusion tensor imaging tractographies, neuron morphologies, and scalar or vector fields of 3D flow. We implement our approach within the OSPRay ray tracing framework, and evaluate it on a range of interactive visualization use cases of fixed- and varying-radius streamlines, pathlines, complex neuron morphologies, and brain tractographies. Our proposed approach provides interactive, high-quality rendering, with low memory overhead.},
+  langid = {english},
+  keywords = {• Computing methodologies → Ray tracing,CCS Concepts},
+  annotation = {\_eprint: https://onlinelibrary.wiley.com/doi/pdf/10.1111/cgf.13703},
+  file = {/Users/xinyi/Zotero/storage/FDG9LHBX/Han et al. - 2019 - Ray Tracing Generalized Tube Primitives Method an.pdf;/Users/xinyi/Zotero/storage/7LW2ZM6B/cgf.html}
 }
 
 @incollection{hutchisonMicroTrackAlgorithmConcurrent2010,
@@ -190,6 +243,25 @@
   abstract = {Diffusion tractography offers enormous potential for the study of human brain anatomy. However, as a method to study brain connectivity, tractography suffers from limitations, as it is indirect, inaccurate, and difficult to quantify. Despite these limitations, appropriate use of tractography can be a powerful means to address certain questions. In addition, while some of tractography's limitations are fundamental, others could be alleviated by methodological and technological advances. This article provides an overview of diffusion magnetic resonance tractography methods with a focus on how future advances might address challenges in measuring brain connectivity. Parts of this review are somewhat provocative, in the hope that they may trigger discussions possibly lacking in a field where the apparent simplicity of the methods (compared to their functional magnetic resonance imaging counterparts) can hide some fundamental issues that ultimately hinder the interpretation of findings, and cast doubt as to what tractography can really teach us about human brain anatomy.},
   pmcid = {PMC3677805},
   file = {/Users/xinyi/Zotero/storage/CFE2K2RQ/Jbabdi and Johansen-Berg - 2011 - Tractography Where Do We Go from Here.pdf}
+}
+
+@article{jeurissenDiffusionMRIFiber2019,
+  title = {Diffusion {{MRI}} Fiber Tractography of the Brain},
+  author = {Jeurissen, Ben and Descoteaux, Maxime and Mori, Susumu and Leemans, Alexander},
+  date = {2019},
+  journaltitle = {NMR in Biomedicine},
+  volume = {32},
+  number = {4},
+  pages = {e3785},
+  issn = {1099-1492},
+  doi = {10.1002/nbm.3785},
+  url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/nbm.3785},
+  urldate = {2023-01-16},
+  abstract = {The ability of fiber tractography to delineate non-invasively the white matter fiber pathways of the brain raises possibilities for clinical applications and offers enormous potential for neuroscience. In the last decade, fiber tracking has become the method of choice to investigate quantitative MRI parameters in specific bundles of white matter. For neurosurgeons, it is quickly becoming an invaluable tool for the planning of surgery, allowing for visualization and localization of important white matter pathways before and even during surgery. Fiber tracking has also claimed a central role in the field of “connectomics,” a technique that builds and studies comprehensive maps of the complex network of connections within the brain, and to which significant resources have been allocated worldwide. Despite its unique abilities and exciting applications, fiber tracking is not without controversy, in particular when it comes to its interpretation. As neuroscientists are eager to study the brain's connectivity, the quantification of tractography-derived “connection strengths” between distant brain regions is becoming increasingly popular. However, this practice is often frowned upon by fiber-tracking experts. In light of this controversy, this paper provides an overview of the key concepts of tractography, the technical considerations at play, and the different types of tractography algorithm, as well as the common misconceptions and mistakes that surround them. We also highlight the ongoing challenges related to fiber tracking. While recent methodological developments have vastly increased the biological accuracy of fiber tractograms, one should be aware that, even with state-of-the-art techniques, many issues that severely bias the resulting structural “connectomes” remain unresolved.},
+  langid = {english},
+  keywords = {brain,connectivity,diffusion MRI,fiber tracking,global,probabilistic,quantification,white matter},
+  annotation = {\_eprint: https://onlinelibrary.wiley.com/doi/pdf/10.1002/nbm.3785},
+  file = {/Users/xinyi/Zotero/storage/YU77JZXB/Jeurissen et al. - 2019 - Diffusion MRI fiber tractography of the brain.pdf;/Users/xinyi/Zotero/storage/PBQ8PW47/nbm.html}
 }
 
 @article{jeurissenMultitissueConstrainedSpherical2014,
@@ -262,6 +334,25 @@
   file = {/Users/xinyi/Zotero/storage/SAVGPGNH/Le Bihan - 2003 - Looking into the functional architecture of the br.pdf}
 }
 
+@article{lebihanMRImagingIntravoxel1986,
+  title = {{{MR}} Imaging of Intravoxel Incoherent Motions: Application to Diffusion and Perfusion in Neurologic Disorders},
+  shorttitle = {{{MR}} Imaging of Intravoxel Incoherent Motions},
+  author = {Le Bihan, D. and Breton, E. and Lallemand, D. and Grenier, P. and Cabanis, E. and Laval-Jeantet, M.},
+  date = {1986-11},
+  journaltitle = {Radiology},
+  shortjournal = {Radiology},
+  volume = {161},
+  number = {2},
+  eprint = {3763909},
+  eprinttype = {pmid},
+  pages = {401--407},
+  issn = {0033-8419},
+  doi = {10.1148/radiology.161.2.3763909},
+  abstract = {Molecular diffusion and microcirculation in the capillary network result in a distribution of phases in a single voxel in the presence of magnetic field gradients. This distribution produces a spin-echo attenuation. The authors have developed a magnetic resonance (MR) method to image such intravoxel incoherent motions (IVIMs) by using appropriate gradient pulses. Images were generated at 0.5 T in a high-resolution, multisection mode. Diffusion coefficients measured on images of water and acetone phantoms were consistent with published values. Images obtained in the neurologic area from healthy subjects and patients were analyzed in terms of an apparent diffusion coefficient (ADC) incorporating the effect of all IVIMs. Differences were found between various normal and pathologic tissues. The ADC of in vivo water differed from the diffusion coefficient of pure water. Results were assessed in relation to water compartmentation in biologic tissues (restricted diffusion) and tissue perfusion. Nonuniform slow flow of cerebrospinal fluid appeared as a useful feature on IVIM images. Observation of these motions may significantly extend the diagnostic capabilities of MR imaging.},
+  langid = {english},
+  keywords = {Astrocytoma,Brain Diseases,Brain Neoplasms,Cerebrovascular Circulation,Humans,Hydrocephalus,Magnetic Resonance Spectroscopy}
+}
+
 @article{maier-heinChallengeMappingHuman2017,
   title = {The Challenge of Mapping the Human Connectome Based on Diffusion Tractography},
   author = {Maier-Hein, Klaus H. and Neher, Peter F. and Houde, Jean-Christophe and Côté, Marc-Alexandre and Garyfallidis, Eleftherios and Zhong, Jidan and Chamberland, Maxime and Yeh, Fang-Cheng and Lin, Ying-Chia and Ji, Qing and Reddick, Wilburn E. and Glass, John O. and Chen, David Qixiang and Feng, Yuanjing and Gao, Chengfeng and Wu, Ye and Ma, Jieyan and He, Renjie and Li, Qiang and Westin, Carl-Fredrik and Deslauriers-Gauthier, Samuel and González, J. Omar Ocegueda and Paquette, Michael and St-Jean, Samuel and Girard, Gabriel and Rheault, François and Sidhu, Jasmeen and Tax, Chantal M. W. and Guo, Fenghua and Mesri, Hamed Y. and Dávid, Szabolcs and Froeling, Martijn and Heemskerk, Anneriet M. and Leemans, Alexander and Boré, Arnaud and Pinsard, Basile and Bedetti, Christophe and Desrosiers, Matthieu and Brambati, Simona and Doyon, Julien and Sarica, Alessia and Vasta, Roberta and Cerasa, Antonio and Quattrone, Aldo and Yeatman, Jason and Khan, Ali R. and Hodges, Wes and Alexander, Simon and Romascano, David and Barakovic, Muhamed and Auría, Anna and Esteban, Oscar and Lemkaddem, Alia and Thiran, Jean-Philippe and Cetingul, H. Ertan and Odry, Benjamin L. and Mailhe, Boris and Nadar, Mariappan S. and Pizzagalli, Fabrizio and Prasad, Gautam and Villalon-Reina, Julio E. and Galvis, Justin and Thompson, Paul M. and Requejo, Francisco De Santiago and Laguna, Pedro Luque and Lacerda, Luis Miguel and Barrett, Rachel and Dell’Acqua, Flavio and Catani, Marco and Petit, Laurent and Caruyer, Emmanuel and Daducci, Alessandro and Dyrby, Tim B. and Holland-Letz, Tim and Hilgetag, Claus C. and Stieltjes, Bram and Descoteaux, Maxime},
@@ -295,6 +386,26 @@
   isbn = {978-0-12-398398-5},
   langid = {english},
   file = {/Users/xinyi/Zotero/storage/CXU5J33U/2014 - Moving Beyond DTI.pdf}
+}
+
+@incollection{newmanChapterMorphologicalBrain2014,
+  title = {Chapter 2 - {{Morphological Brain Changes}} in {{Chronic Pain}}: {{Mystery}} and {{Meaning}}},
+  shorttitle = {Chapter 2 - {{Morphological Brain Changes}} in {{Chronic Pain}}},
+  booktitle = {Chronic {{Pain}} and {{Brain Abnormalities}}},
+  author = {Newman, Eric and Moulton, Eric and Becerra, Lino and Borsook, David},
+  editor = {Saab, Carl Y.},
+  date = {2014-01-01},
+  pages = {15--40},
+  publisher = {{Academic Press}},
+  location = {{San Diego}},
+  doi = {10.1016/B978-0-12-398389-3.00002-9},
+  url = {https://www.sciencedirect.com/science/article/pii/B9780123983893000029},
+  urldate = {2023-01-31},
+  abstract = {Chronic pain is a common ailment present worldwide and across all age groups. It is concomitant with a plethora of other medical syndromes, including migraine and other headache disorders, chronic back pain (CBP), phantom limb pain, fibromyalgia (FM), irritable bowel syndrome (IBS), complex regional pain syndrome (CRPS), pain disorder, chronic prostatitis/chronic pelvic pain (CPP), and provoked vestibulodynia (PVD). Recent research has identified morphological changes in the brain, in both gray (GM) and white matter (WM), associated with chronic pain disorders. These findings suggest a common “brain signature” of common pain, which can be drawn upon for future study. These findings also suggest important physiological underpinnings of chronic pain. A variety of mechanisms have been proposed thus far, including neurogenesis, neuronal morphological/cerebral vasculature changes, and non-neuronal cell genesis and morphological changes for GM changes, and myelination and axonal changes for WM changes. Research has also shown these brain morphological changes to be at least partly reversible, suggesting a common, predictable pattern of chronic pain that can be exploited in treatment.},
+  isbn = {978-0-12-398389-3},
+  langid = {english},
+  keywords = {Chronic pain,Gray matter,Morphology,White matter},
+  file = {/Users/xinyi/Zotero/storage/I4I56QPA/Newman et al. - 2014 - Chapter 2 - Morphological Brain Changes in Chronic.pdf;/Users/xinyi/Zotero/storage/6PG2FGE3/B9780123983893000029.html}
 }
 
 @book{ozarslanAnisotropyFieldsScales2021,
@@ -431,6 +542,15 @@
   file = {/Users/xinyi/Zotero/storage/SEWNEKAW/Smith et al. - 2013 - SIFT Spherical-deconvolution informed filtering o.pdf;/Users/xinyi/Zotero/storage/R6QJA2IH/S1053811912011615.html}
 }
 
+@online{SurfacebasedTrackingShort,
+  title = {Surface-Based Tracking for Short Association Fibre Tractography | {{Elsevier Enhanced Reader}}},
+  doi = {10.1016/j.neuroimage.2022.119423},
+  url = {https://reader.elsevier.com/reader/sd/pii/S1053811922005407?token=ACDF09FB116258B74F50B8DB1321A2F876E880EC57E69C7F449C3F559DE21B1263F71A7672FF3C5F7EEB21379665A46E&originRegion=eu-west-1&originCreation=20230118002102},
+  urldate = {2023-01-18},
+  langid = {english},
+  file = {/Users/xinyi/Zotero/storage/CRFNJN2Q/Surface-based tracking for short association fibre.pdf}
+}
+
 @article{tournierDirectEstimationFiber2004,
   title = {Direct Estimation of the Fiber Orientation Density Function from Diffusion-Weighted {{MRI}} Data Using Spherical Deconvolution},
   author = {Tournier, J. -Donald and Calamante, Fernando and Gadian, David G. and Connelly, Alan},
@@ -448,24 +568,6 @@
   langid = {english},
   keywords = {Diffusion tensor,MRI,Tractography},
   file = {/Users/xinyi/Zotero/storage/SLHEGZ4M/Tournier et al. - 2004 - Direct estimation of the fiber orientation density.pdf;/Users/xinyi/Zotero/storage/8TTRD8Z6/S1053811904004100.html}
-}
-
-@article{tournierDirectEstimationFiber2004a,
-  title = {Direct Estimation of the Fiber Orientation Density Function from Diffusion-Weighted {{MRI}} Data Using Spherical Deconvolution},
-  author = {Tournier, J.-Donald and Calamante, Fernando and Gadian, David G. and Connelly, Alan},
-  date = {2004-11},
-  journaltitle = {NeuroImage},
-  shortjournal = {Neuroimage},
-  volume = {23},
-  number = {3},
-  eprint = {15528117},
-  eprinttype = {pmid},
-  pages = {1176--1185},
-  issn = {1053-8119},
-  doi = {10.1016/j.neuroimage.2004.07.037},
-  abstract = {Diffusion-weighted magnetic resonance imaging can provide information related to the arrangement of white matter fibers. The diffusion tensor is the model most commonly used to derive the orientation of the fibers within a voxel. However, this model has been shown to fail in regions containing several fiber populations with distinct orientations. A number of alternative models have been suggested, such as multiple tensor fitting, q-space, and Q-ball imaging. However, each of these has inherent limitations. In this study, we propose a novel method for estimating the fiber orientation distribution directly from high angular resolution diffusion-weighted MR data without the need for prior assumptions regarding the number of fiber populations present. We assume that all white matter fiber bundles in the brain share identical diffusion characteristics, thus implicitly assigning any differences in diffusion anisotropy to partial volume effects. The diffusion-weighted signal attenuation measured over the surface of a sphere can then be expressed as the convolution over the sphere of a response function (the diffusion-weighted attenuation profile for a typical fiber bundle) with the fiber orientation density function (ODF). The fiber ODF (the distribution of fiber orientations within the voxel) can therefore be obtained using spherical deconvolution. The properties of the technique are demonstrated using simulations and on data acquired from a volunteer using a standard 1.5-T clinical scanner. The technique can recover the fiber ODF in regions of multiple fiber crossing and holds promise for applications such as tractography.},
-  langid = {english},
-  keywords = {Algorithms,Anisotropy,Brain,Computer Simulation,Diffusion Magnetic Resonance Imaging,Humans,Image Processing; Computer-Assisted,Magnetic Resonance Imaging,Nerve Fibers}
 }
 
 @article{tournierDirectEstimationFiber2004b,
@@ -612,31 +714,3 @@
   annotation = {cites: guevaraSuperficialWhiteMatter2020},
   file = {/Users/xinyi/Zotero/storage/V6XP5A9T/Zhu et al. - 2019 - Challenges and Opportunities in dMRI Data Harmoniz.pdf}
 }
-
-@article{intro,
-  title={MR imaging of intravoxel incoherent motions: application to diffusion and perfusion in neurologic disorders.},
-  author={Le Bihan, Denis and Breton, Eric and Lallemand, Denis and Grenier, Philippe and Cabanis, Emmanuel and Laval-Jeantet, Maurice},
-  journal={Radiology},
-  volume={161},
-  number={2},
-  pages={401--407},
-  year={1986}
-}
-
-@dataset{maier_hein_klaus_2015_572345,
-  author       = {Maier-Hein, Klaus and
-                  Neher, Peter and
-                  Houde, Jean-Christophe and
-                  Caruyer, Emmanuel and
-                  Daducci, Alessandro and
-                  Dyrby, Tim and
-                  Stieltjes, Bram and
-                  Descoteaux, Maxime},
-  title        = {Tractography Challenge ISMRM 2015 Data},
-  month        = may,
-  year         = 2015,
-  publisher    = {Zenodo},
-  doi          = {10.5281/zenodo.572345},
-  url          = {https://doi.org/10.5281/zenodo.572345}
-}
-
