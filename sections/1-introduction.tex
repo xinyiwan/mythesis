@@ -1,0 +1,17 @@
+\chapter{Introduction}
+
+Diffusion magnetic resonance imaging(dMRI) is a powerful imaging modality capable of inferring the local axonal structure in each imaging voxel by exploiting the natural random movement of water molecules in biological tissues \cite*{intro}. Tractography is a set of algorithms aiming at mapping the major neuronal pathways in the white matter of the brain from dMRI signals. Based on the estimated direction of neuronal fibres from dMRI data, the tractogram of the brain could be generated with tractography, which consists of numerous streamlines that 
+represent the microstructure of brain tissues. 
+According to its technical features, the tractography of dMRI could contribute to the noninvasive investigation of brain connectivity and have potential in clinical research. 
+
+However, there are still concerns and challenges with tractography. The anatomically implausible streamlines from the tractography might influence research results from tractogram, such as the analysis of brain connectivity. To solve this problem, tractogram filtering methods have been developed to remove the faulty connections in a post-processing step \cite{hainAssessingStreamlinePlausibility2022a}.
+This project mainly analyses one of the tractogram filtering tools, \textit{Convex Optimization Modeling for Microstructure Informed Tractography} (COMMIT), which aims at reestablishing the link between tractography and tissue microstructure \cite{daducciCOMMITConvexOptimization2015}. 
+Meanwhile, this project will compare with the results from the study focusing on the performance of another filtering method named \textit{Spherical-deconvolution informed filtering of tractograms} (SIFT) \cite{smithSIFTSphericaldeconvolutionInformed2013}.
+
+First, the project plans to investigate the performance of COMMIT by applying it multiple times to the subsets of the same subject. The results from filtering methods are not always consistent, and might be sensitive to the size and composition of the inputs. For example, a streamline from the same subject can be accepted by the filtering method in one run but rejected in another. Although the anatomical ground truth is absent, a pseudo ground truth could be generalized from the partly consistent results of COMMIT. By applying COMMIT to multiple tractogram subsets, consistent assessments for each streamline are extracted
+as pseudo-ground truths. The streamlines that are always accepted by COMMIT will be regarded as true streamlines,
+while those which are always rejected will be regarded as false streamlines. And the streamlines with different
+results are regarded as inconclusive streamlines.
+
+With these assumptions, deep learning methods are exploited in the second part of this project.
+The classifiers based on different deep learning architectures are used to distinguish different groups of streamlines. The potential of using deep learning methods in filtering is the focus of this part of study.
