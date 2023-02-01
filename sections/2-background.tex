@@ -6,7 +6,25 @@ In this chapter, theoretical background of this project will be introduced in de
 \section{Diffusion MRI}
 
 Diffusion MRI is a non-invasive method to track the random microscopic motion (or diffusion) of water molecules in biological tissues. 
-As molecules interact with different obstacles as they diffuse throughout tissues, dMRI provides insight into the microscopic details of tissue architecture \cite{newmanChapterMorphologicalBrain2014}. 
+As molecules interact with different obstacles as they diffuse throughout tissues, 
+dMRI provides insight into the microscopic details of tissue architecture \cite{newmanChapterMorphologicalBrain2014}. 
+The water molecules moving in the brain tissues may cross or interact with many tissue components such as cell membranes, fibres and macromolecules. \cite{lebihanLookingFunctionalArchitecture2003}
+It means the movement of these water molecules is impeded by the tissues. 
+Compared to the water molecules that can move freely, 
+the diffusion distance of constraint molecules is reduced and disobeys the standard 3-dimentinal Gaussian. 
+This phenomenon is described in more details in the \ref{sec:dmri} as well.
+
+\section{Fibre Orientation}
+By measuring the diffusion signal, the orientations of fibres can be interpreted which provide the 'density' information of the tissue of interest.
+Then in the next step, the local orientation information can be pieced together to infer the long-range pathways connecting distant regions of the brain \cite{lebihanLookingFunctionalArchitecture2003}, 
+which is realized with tractography. 
+Currently, diffusion tensor imaging (DTI) is still the most widely used method for assessing WM orientation and organization \cite{basserEstimationEffectiveSelfDiffusion1994}.
+However, when meeting more complex structures such multiple fibres crossing or passing each other, the tractography based on DTI is prone to 
+generate implausible results. Therefore, to achieve better tractograms from tracking algorithms, it's essential to have diffusion model that can 
+well represent the orientations. Various methods have been purposed to assess the orientations from diffusion signals, which are introduced in \ref{sec:dmri}.
+
+In this section, the high angular resolution diffusion imaging (HARDI) protocol and the method related to it are explained. 
+HARDI measures a great number of orientations from diffusion signals.
 
 
 \section{Tractography}
