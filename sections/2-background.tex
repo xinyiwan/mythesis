@@ -15,16 +15,34 @@ the diffusion distance of constraint molecules is reduced and disobeys the stand
 This phenomenon is described in more details in the \ref{sec:dmri} as well.
 
 \section{Fibre Orientation}
-By measuring the diffusion signal, the orientations of fibres can be interpreted which provide the 'density' information of the tissue of interest.
+By measuring the diffusion signal, the orientations of fibres can be interpreted, and they provide the density information of the tissue of interest.
 Then in the next step, the local orientation information can be pieced together to infer the long-range pathways connecting distant regions of the brain \cite{lebihanLookingFunctionalArchitecture2003}, 
 which is realized with tractography. 
 Currently, diffusion tensor imaging (DTI) is still the most widely used method for assessing WM orientation and organization \cite{basserEstimationEffectiveSelfDiffusion1994}.
 However, when meeting more complex structures such multiple fibres crossing or passing each other, the tractography based on DTI is prone to 
 generate implausible results. Therefore, to achieve better tractograms from tracking algorithms, it's essential to have diffusion model that can 
 well represent the orientations. Various methods have been purposed to assess the orientations from diffusion signals, which are introduced in \ref{sec:dmri}.
+In this section, methods for estimating the distribution of fiber orientations within a voxel and the high angular resolution diffusion imaging (HARDI) protocol, are explained. 
 
-In this section, the high angular resolution diffusion imaging (HARDI) protocol and the method related to it are explained. 
-HARDI measures a great number of orientations from diffusion signals.
+\subsection{The fibre orientation density function}
+To compute the fibre orientation density function from on the measured signal, several important assumptions are made based on the characteristics of neural fibres and the diffusion inside them. 
+As it introduced in the first chapter, the water molecules inside the fibres are less likely to visit other regions. First, it is assumed that there is 
+no spatial exchanges between fibre bundles of different orientations. Ideally, the measured diffusion-weighted signal is formed by adding
+independent signal from each area. For the curve fibres, the second assumption is made that there is no exchange between different sections of the same fibre, because
+the sections will be separated by more than the diffusion distance. Based on the assumptions, the measured diffusion-weighted signal can be approximated by the sum of signals from 
+different areas.
+
+
+\subsection{HARDI}
+HARDI is a type of dMRI that measures diffusion signals on a sphere in q-space \cite{consagraOptimizedDiffusionImaging2022}.
+It is widely used to estimate the white matter structure by constructing the diffusion orientation function(ODF), or the fibre ODF(fODF), which is 
+a sharper version of ODF computed by deconvolving the ODF \cite{descoteauxDeterministicProbabilisticTractography2009}. 
+Spherical deconvolution (SD) is one of the methods to estimate fODF in each brain voxel. The original diffusion weighted(DW) signal is formed from the
+various fibre population, and given by spherical convolution of the response function (the DW signal profile for a typical fibre population) 
+with the fODF (the apparent density of fibres as a function of orientation) \cite{jeurissenMultitissueConstrainedSpherical2014}. 
+Inversely, the fODF is obtained by the SD of the response function from the measured DW signal.
+
+Spherical function is usually represented by a linear combination of spherical harmonics (SH). The coefficient of each harmonic stands for the 
 
 
 \section{Tractography}
