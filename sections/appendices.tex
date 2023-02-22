@@ -12,14 +12,14 @@
 \chapter{First Appendix}
 
 
-\chapter{Second Appendix}
-This part aims to give background information about this thesis in the field of filtering methods on nerve tracts using data collected by diffusion MRI. 
+\chapter{State of art}
+This chapter aims to give background information about this thesis in the field
+of filtering methods on nerve tracts using data collected by diffusion MRI. 
 
 % \renewcommand{\thesection}{\Alph{section}}
 % \renewcommand{\thesubsection}{\Alph{subsection}}
 
 \section{Diffusion Magnetic Resonance Imaging}
-\label{sec:dmri}
 
 Diffusion magnetic resonance imaging (dMRI) has led to discoveries of microstructure and connectivity in human brain.
 It is the only non-invasive way to 
@@ -64,7 +64,7 @@ by means of the so called tractography (also known as fiber-tracking) \cite*{dad
 
 
 \section{Tractography}
-\subsection{Diffusion Modeling}
+\subsection{Diffusion Modelling}
 
 Diffusion data from dMRI will be used to estimate fiber orientations of each voxel. 
 This section would introduce some prominent methods and models in this field.
@@ -100,13 +100,21 @@ and the coordinates of diffusion tensor can be interpreted.
     \label{fig:DTI}
 \end{figure}
 
-One major flaw of this model is the inability to represent multiple fiber orientations in a voxel, which can occur due to fiber kissing or crossing \cite*{tournierDirectEstimationFiber2004}.
-Besides, there are more pre-defined models including two-tensor model \cite*[]{qaziResolvingCrossingsCorticospinal2009}, ball-and-sticks model \cite*[]{behrensCharacterizationPropagationUncertainty2003}
+Currently, DTI is still the most widely used method for assessing WM orientation and organization \cite{basserEstimationEffectiveSelfDiffusion1994}.
+However, when meeting more complex structures such multiple fibres crossing or passing each other, the tractography based on DTI is prone to 
+generate implausible results. Therefore, to achieve better tractograms from tracking algorithms, it's essential to have diffusion model that can 
+well represent the orientations. 
+
+Various methods have been purposed to assess the orientations from diffusion signals.
+The major flaw of tensor model is the inability to represent multiple fiber orientations in a voxel.
+There are more pre-defined models including two-tensor model \cite*[]{qaziResolvingCrossingsCorticospinal2009}, ball-and-sticks model \cite*[]{behrensCharacterizationPropagationUncertainty2003}
 and neurite orientation dispersion and density imaging (NODDI) model \cite*[]{zhangNODDIPracticalVivo2012}. 
 The advantages of these models is that pre-defined patterns in estimating orientations require fewer diffusion sampling directions from dMRI data. 
 But when meeting more complex cases such as pathologic data, the results from pre-defined models can't be ensured.
 
-Different from using models, some methods compute the orientational distribution of a voxel. 
+\subsection{The fibre orientation density function}
+
+Some methods compute the orientational distribution of a voxel. 
 Orientation Distribution Functions (ODFs) are the histograms of distribution of diffusion at different dimension. 
 Peak values from ODFs can be chosen as orientations during fiber tracking. Methods exploit distribution are flexible with complex condition.
 In figure \ref*{fig:odf}, it shows an example of ODF from a voxel computing from samples of multiple directions in dMRI acquisition.
@@ -126,18 +134,85 @@ In figure \ref*{fig:odf}, it shows an example of ODF from a voxel computing from
     \label{fig:odf}
 \end{figure}
 
-Two types modeling methods mentioned above can be viewed as model-based method and model-free method. 
+To compute the fibre orientation density function from on the measured signal, several important assumptions are made based on the characteristics of neural fibres and the diffusion inside them. 
+
+As it introduced in the this chapter, the water molecules inside the fibres are less likely to visit other regions. First, it is assumed that there is 
+no spatial exchanges between fibre bundles of different orientations. Ideally, the measured diffusion-weighted signal is formed by adding
+independent signal from each area. For the curve fibres, the second assumption is made that there is no exchange between different sections of the same fibre, because
+the sections will be separated by more than the diffusion distance. Therefore, the measured diffusion-weighted signal can be approximated by the sum of signals from 
+different areas.
+
+Third, different diffusion characteristics of the all fibre populations are assumed to be identical, so that the diffusion-weighted signal attenuation 
+from a single oriented fibre population can be represented by an axially symmetric response function $R(h)$, where $h$ is the elevation angle in spherical coordinates \cite{tournierDirectEstimationFiber2004}. 
+So the attenuation signal $S(\theta, \phi)$ measured from all fibre population can be represented by a linear combination of multiple response functions with their weights and rotation, which is written as:
+
+\begin{gather}\label{attenuationsignal}  
+    S(\theta, \phi) = \sum_{i}^{}f_{i}\hat{A}_{i}R(\theta)
+\end{gather}
+
+In the equation\ref*{attenuationsignal},  $f_{i}$ is the volume fraction for the $i$th fiber population, and $\hat{A}_{i}$ is the operator representing a rotation onto the direction $\theta_{i}, \phi_{i}$ \cite{tournierDirectEstimationFiber2004}.
+This equation can also be expressed by a convolution of a unit sphere of response function with the fibre density distribution function(fODF), which is written as:
+
+\begin{gather}\label{convo}  
+    S(\theta ,\phi ) = F(\theta ,\phi ) \otimes R(\theta)
+\end{gather}
+
+The fODF gives the volume fraction of the fibres that have the same orientation $(\theta, \phi)$ expressed in spherical coordinates. 
+If there are $n$ distinct fibre population, then fODF consists of $n$ Dirac delta functions indicating the orientations and the respective weights
+from the volume fractions. An example when $n = 2$ is given below in Fig \ref{fig:2dconv}. 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width= 15cm]{figures/2D.png}
+        \caption{In this simple 2D illustration, the voxel contains two fiber populations with distinct orientations
+         $(\theta_{1} ,\phi_{1})$ and $(\theta_{2} ,\phi_{2})$, and volume fractions $f1$ and $f2$ ($f1 = f2 = 1/2$ in this case). 
+         For each plot, the dotted lines represent the fiber orientation(s) and the continuous line the corresponding signal attenuation. 
+         The measured diffusion-weighted signal attenuation $S(\theta, \phi)$ is the sum of each fiber population’s characteristic profile $S_{1}(\theta, \phi) = \hat{A}_{1}R(\theta)$, and $S_{2}(\theta, \phi) = \hat{A}_{2}R(\theta)$, 
+         weighted by their respective volume fractions. This can be expressed as a convolution over the unit sphere of an axially symmetric response function R(h), 
+         describing the signal attenuation measured for a single fiber population, with a fiber orientation density function $F(\theta ,\phi)$, 
+         describing the fiber orientations present in the voxel \cite{tournierDirectEstimationFiber2004}. }
+    \label{fig:2dconv}
+\end{figure}
+
+\subsection{HARDI}
+High angular resolution diffusion imaging (HARDI) is a type of dMRI that measures diffusion signals on a sphere in q-space \cite{consagraOptimizedDiffusionImaging2022}.
+During the scanning of high-angular resolution, the signal $S(\theta, \phi)$ is collected in a great number of orientations.
+So the white matter structure is estimated by constructing fODF. Spherical deconvolution (SD) is used to estimate fODF in each brain voxel. 
+The original diffusion weighted signal is formed from the
+various fibre population, and given by spherical convolution of the response functions with the fODF (the apparent density of fibres as a function of orientation) \cite{jeurissenMultitissueConstrainedSpherical2014}. 
+If the $R(\theta)$ is known, the fODF can be obtained by the SD of the response function from the measured DW signal inversely.
+
+\subsection{Spherical Deconvolution}
+Spherical function is usually represented by a linear combination of spherical harmonics and rotational harmonics. 
+The spherical harmonics form a complete orthonormal basis set of functions over the sphere, 
+much like the Fourier series forms a complete orthonormal basis over an interval in Cartesian space \cite{tournierDirectEstimationFiber2004}.
+Each spherical harmonic contains two main parameters: its order $n$ ($n \geq  0$) and phase factor $m$ ($ -n \leq m \leq n$). 
+Increasing order $n$ indicates the higher angular frequency. 
+
+The spherical convolution process is regarded as an action which contains a series of rotation on a function defined over a sphere, which can be related
+to the equation \ref{attenuationsignal}. If $\underline{F}^{n}$ is defined to be a vector containing $2n+1$ harmonics in $n$th order 
+and $R_{n}$ is the matrix of size $(2n+1)(2n+1)$ representing the $n$th order of rotational harmonics, 
+so the $n$th order spherical representation of $S(\theta, \phi)$ can be expressed as:
+
+\begin{gather}\label{sc}  
+    S^{n} = R^{n} \underline{F}^{n}
+\end{gather}
+Therefore, the spherical deconvolution operation can be performed simply by inverting each $R^{n}$ matrix to recover $\underline{F}^{n}$. 
+
+\subsection{Constrained Spherical Deconvolution}
+Obtaining the unknown coefficients of fODF through the deconvolution operation on the spherical convolution matrix can be cast as a linear least-squares problem \cite{jeurissenMultitissueConstrainedSpherical2014}.
+But this operation can be sensitive to noise and ill-posed. Thus, the constraint SD (CSD) is purposed which performs the SD operation with drastically reduced noise sensitivity, 
+allowing reliable fODF estimates on clinically feasible DW-MRI data \cite{tournierRobustDeterminationFibre2007}. CSD performs well in pure WM, while it's prone to produce 
+noise in grey matter (GM) and cerebrospinal fluid (CSF) \cite{jeurissenMultitissueConstrainedSpherical2014}. 
+
+So another technique named multi-shell, multi-tissue CSD (MSMT-CSD) is purposed, which assumes that the DW signal arises from the contributions of the three main tissue types found in the brain: WM, GM and CSF \cite{jeurissenMultitissueConstrainedSpherical2014}.
+Using MSMT-CSD, the ODF of WM is considered to be anisotropic, while in GM and CSF the ODF is considered to be isotropic and uses an SH series of order 0. 
+Some study has shown that compared to single shell single tissue CSD (SSST-CSD), MSMT-CSD can substantially increase the precision of the fODF fibre orientations 
+and reduce the presence of spurious fODF peaks in voxels containing GM and/or CSF \cite{jeurissenMultitissueConstrainedSpherical2014}.
+
+Methods mentioned above can be viewed as model-based method and model-free method. 
 Spherical deconvolution methods combine both of them. These methods estimate the fiber orientation distribution directly from high angular resolution diffusion-weighted MR data without prior assumptions \cite*[]{tournierDirectEstimationFiber2004}.
 On the one hand, these methods also computes ODFs as model-free methods. 
-
-Different from the other two methods, the prior assumption of spherical deconvolution
-is that all white matter fiber bundles in the brain share identical diffusion characteristics,
-thus implicitly assigning any differences in diffusion anisotropy to partial volume effects \cite*[]{tournierDirectEstimationFiber2004}.
-To be specific, the diffusion model in spherical deconvolution comes from selected white matter.
-Kernels extracted from diffusion model are called \textit{response functions} and are used to convolve with ODFs.
-The results are called fiber orientation distribution (FOD).
-Some research indicates that FOD tractography has a better resolving power than DTI and diffusion ODF methods, making it ideal for delineating fibers crossing at a sharp angle \cite*[]{yehTractographyMethodsFindings2021}.
-Moreover, all these methods are rather recent, so more studies and validations are needed.
 
 \subsection{Fiber Tracking Methods}
 
@@ -159,7 +234,7 @@ This method also starts with pre-defined points, as known as seeds, and propagat
 information of next voxel is determined by the present voxel and its derivative, 
 which can be viewed as $f(t_{i+1}) = f(t_{i}) + f'(t_{i})\Delta s$. And $\Delta s$ here is the step size in propagation.
 After propagation on every given seed, all streamlines are finally generated.
-The set of obtained streamlines is usually referred to as a tractogram
+The set of obtained streamlines is usually referred to as a tractogram.
 
 \begin{figure}[ht]
     \centering
@@ -281,4 +356,3 @@ The method seems to be very straightforward, but it's not easy to find the best 
 % A neuron has three main parts: dendrites, an axon, and a cell body (soma).
 
 \subsection{Brain Connectivity Creation Pipeline}
-
