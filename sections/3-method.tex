@@ -23,7 +23,6 @@ The tracking was further constrained by anatomical priors based on the segmentat
 And the ten million streamlines cover the whole white matter of each subject. 
 
 \section{Hardware and Software}
-
 Two Nvidia GPUs are used for the training of deep learning models in this project, which respectively are of 4GB and 11GB memory. 
 The latter GPU is deployed on a platform, Medical Artificial Intelligence Aggregator (MAIA) \cite{MAIA}, which aims to integrate and promote collaborations in the medical field.
 
@@ -35,8 +34,9 @@ Python library Dipy takes care of postprocessing and analysing the tractograms i
 The neural network is built based on TensorFlow, and the monitor of the training process is done with TensorBoard.
 
 \section{Randomized COMMIT (rCOMMIT)}
-Lack of ground truth of tractogram has always been a challenge in this field. For filtering methods, there is no ground truth for the results either. 
-Avoiding biases in the results and extracting plausible information from the filtering methods, randomized COMMIT is purposed. 
+Finding anatomical ground truth for tractogram has always been a challenge, so there is no ground truth for the filtering method either.
+In addition, the results from the existing filtering methods are not consistent. Both problems make the filtering methods less plausible.
+To Avoid biases and extract plausible information from the filtering methods, randomized COMMIT is purposed. 
 The main idea of this method is to use multiple assessments from COMMIT on the same streamline in different subsets in order to classify streamlines into different groups.
 The filtering process can be regarded as a binary classification, since in one time running of COMMIT, the streamline is either accepted or rejected by the filtering method.
 The results from multiple times of filtering are seen as votes that are either positive or negative.
@@ -62,13 +62,9 @@ Therefore, with multiple times of filtering, the acceptance rate (AR) of each st
 \end{gather}
 $AR(s)$ refers to the acceptance rate for the streamline $s$ after receiving all the votes from the experiment in different sizes.
 $P(s)$ stands for the positive votes while $N(s)$ are the negative votes.
- The number of 
 It's worthy mentioning that each subset is randomly sampled from the raw data. 
-Although a target average number of filtering is set, but the number of occurrences of each streamline is not ensured, 
-which means the numbers of votes for the streamlines can be various, or even zero.
-
-
-
+Although a target average number of filtering is set, but the number of occurrences of each streamline in the subsets is not ensured, 
+which means the numbers of votes for the streamlines can be various.
 
 \begin{figure}[ht]
     \centering
@@ -116,10 +112,42 @@ which means the numbers of votes for the streamlines can be various, or even zer
     
 \end{algorithm}
 
-
 \section{Pseudo Ground Truth}
 
-\section{Deep Learning Model Construction}
+After receiving all the votes from the experiments, the acceptance rate can be obtained for almost every streamline.
+The pseudo ground truth is based on the acceptance rate of each streamline. This step is based on the very important assumption in this study.
+The streamline with higher acceptance rate indicates its better ability to survive from filtering. These streamline are more plausible than those with lower acceptance rate.
+To better classify streamlines, strict conditions are made to separate them into three groups:
+
+\begin{enumerate}
+    \item Plausible group when $AR = 100\%$
+    \item Implausible group when $AR = 0\%$
+    \item Inconclusive group when $0\% <AR< 100\%$
+  \end{enumerate}
+
+Streamlines being in the plausible group means that they are always accepted by the COMMIT, while in the implausible group the streamlines are always rejected.
+These two groups can also be labeled as true and false. Those in the inconclusive group receives inconsistent votes from the COMMIT. 
+
+\section{Deep Learning Streamline Classifier}
+rCOMMIT is purposed to extract plausible information from the filtering methods. To further investigate the different properties between groups and the potential
+of deep learning methods in filtering field, neural networks classifiers are built and trained on the labeled dataset from the last step.
+In the experiment, the classifiers are trained for the binary classifications among three classes and the multi-class tasks.
+
+\subsection{Data Preprocessing}
+To make the datasets from different subjects more appropriate for the training process, some preprocessing steps are applied.
+Originally, each streamline consists of multiple sampling points and each point has three coordinates. 
+First, the streamline coordinates are normalized to the range of -1 and 1 in each dimension using the maximum and minimum values per subject.
+However, the sampled points for each streamline are various. Secondly, to standardize the input of each streamline, they are resampled to the same 
+number of points. A big number of points from the input streamline might cause additional computation, while too few points might contain 
+inadequate information. So the medium number of streamline points among the training subjects is chosen to be the resampled number, which is 23.
+Linear interpolation is used to realize this step.
+
+\subsection{Model Construction}
+
+\subsection{Data Generator}
+
+\subsection{Training Pipeline}
+
 
 
 
