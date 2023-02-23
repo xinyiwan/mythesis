@@ -23,7 +23,7 @@ The tracking was further constrained by anatomical priors based on the segmentat
 And the ten million streamlines cover the whole white matter of each subject. 
 
 \section{Hardware and Software}
-Two Nvidia GPUs are used for the training of deep learning models in this project, which respectively are of 4GB and 11GB memory. 
+Two Nvidia GPUs are used for the training of deep learning models in this project, which respectively are of 4 GB and 11 GB memory. 
 The latter GPU is deployed on a platform, Medical Artificial Intelligence Aggregator (MAIA) \cite{MAIA}, which aims to integrate and promote collaborations in the medical field.
 
 COMMIT \cite{daducciCOMMITConvexOptimization2015} is used as the main filtering tool in the experiments. 
@@ -134,17 +134,37 @@ of deep learning methods in filtering field, neural networks classifiers are bui
 In the experiment, the classifiers are trained for the binary classifications among three classes and the multi-class tasks.
 
 \subsection{Data Preprocessing}
-To make the datasets from different subjects more appropriate for the training process, some preprocessing steps are applied.
+To make the datasets from different subjects more appropriate for the training process, preprocessing steps are conducted.
 Originally, each streamline consists of multiple sampling points and each point has three coordinates. 
 First, the streamline coordinates are normalized to the range of -1 and 1 in each dimension using the maximum and minimum values per subject.
 However, the sampled points for each streamline are various. Secondly, to standardize the input of each streamline, they are resampled to the same 
-number of points. A big number of points from the input streamline might cause additional computation, while too few points might contain 
+number of points. A big number of points from the input streamline might cause expensive computation, while too few points might contain 
 inadequate information. So the medium number of streamline points among the training subjects is chosen to be the resampled number, which is 23.
-Linear interpolation is used to realize this step.
+Linear interpolation is used to realize this step. Last, the shape of the streamlines is changed from 3-D into 1-D by flattening the vector. 
+In beginning of the preprocessing steps, all the tck files of tractograms are loaded as Numpy arrays, 
+so the preprocessing steps can be easily operated with Numpy. 
 
 \subsection{Model Construction}
 
+For the classification tasks, the Convolutional Neural Network (CNN) is widely used. In our study, the classifiers are built on the CNN architecture.
+Each classifier contains two 1-D conventional layers with ReLU activation function and the kernel sizes 5 and 3. 
+A max-pooling layer with pool size 2 is applied after each of them. Then conventional layers are then followed by the dense layer with a dropout chance.
+Last, the dense layer is connected with either one or multiple neurons as output, depending on the classification tasks.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width= 10cm]{figures/models.png}
+        \caption{Architecture of the classifiers. Left: binary classifier. Right: multi-class classifier. 
+        The only difference is in the last dense layer. The binary classifier uses one neuron with sigmoid activation, 
+        while the multi-class classifier uses multiple output neurons with softmax activation. In our case, the output neurons are 3 for the multi-class classifier.}
+    \label{fig:models}
+\end{figure}
+
+To do: about RNN model
+
 \subsection{Data Generator}
+
+
 
 \subsection{Training Pipeline}
 
