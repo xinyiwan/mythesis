@@ -141,6 +141,7 @@ However, the sampled points for each streamline are various. Secondly, to standa
 number of points. A big number of points from the input streamline might cause expensive computation, while too few points might contain 
 inadequate information. So the medium number of streamline points among the training subjects is chosen to be the resampled number, which is 23.
 Linear interpolation is used to realize this step. Last, the shape of the streamlines is changed from 3-D into 1-D by flattening the vector. 
+The original coordinates are 
 In beginning of the preprocessing steps, all the tck files of tractograms are loaded as Numpy arrays, 
 so the preprocessing steps can be easily operated with Numpy. 
 
@@ -162,11 +163,20 @@ Last, the dense layer is connected with either one or multiple neurons as output
 
 To do: about RNN model
 
-\subsection{Data Generator}
+\subsection{Balance Data Generator}
+
+The data generator is designed to solve the imbalance problem of the dataset. In a binary classification, 
+when there is a big imbalance between two classes, for example one class over 90\% and the other one less than 10\%,
+the classifier is prone to predict the result to be the bigger class on the normal batch of input. 
+
+In our study, the dataset is mainly based on the filtering method which rejects the majority of the streamlines. 
+The disproportion in the dataset is expected. Thus, the data generator is used to over-sample the smaller class for the training and testing.
+The batch size is defined to be 60, so it is flexible with two classes and three classes of the input data. 
+The epoch size is defined by the larger class and each sub-batch from this class will be seen at least once.
+While the sub-batch from the smaller class will be reused and shuffled when it is exhausted during an epoch.
 
 
 
-\subsection{Training Pipeline}
 
 
 
