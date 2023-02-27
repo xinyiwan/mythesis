@@ -7,12 +7,12 @@ explanation of the experiment design and the construction of deep learning model
 The project was performed in following steps:
 \begin{itemize}
     \item Access and preprocess the datasets if necessary.
-    \item Apply rCOMMIT experiment on the target datasets
-    \item Extract pseudo ground truth from the experiment results.
-    \item Construct deep learning models.
+    \item Apply rCOMMIT experiment on the target datasets.
+    \item Extract pseudo ground truth from the results of rCOMMIT.
+    \item Construct deep learning models for the classification tasks.
     \item Train and tune the models to achieve stable performance.
-    \item Compare the results between models.
-    \item Compare the results with previous research.
+    \item Analyze the results from deep learning methods.
+    \item Compare the results with SITF and rSIFT.
   \end{itemize}
 
 \section{Datasets}
@@ -84,7 +84,7 @@ which means the numbers of votes for the streamlines can be various.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width= 16cm]{figures/pipe.jpg}
+    \includegraphics[width= 16cm]{figures/pipe.png}
         \caption{The pipeline of rCOMMIT. 
         }
     \label{fig:pipe}
@@ -143,6 +143,20 @@ To better classify streamlines, strict conditions are made to separate them into
 
 Streamlines being in the plausible group means that they are always accepted by the COMMIT, while in the implausible group the streamlines are always rejected.
 These two groups can also be labeled as true and false. Those in the inconclusive group receives inconsistent votes from the COMMIT. 
+
+The clear steps of extracting the pseudo ground truth are explained in details. The generation of the plausible group is used as an example. 
+First, the index of the accepted streamlines by COMMIT from the dataset of 10 million streamlines is achieved, which is regarded as the original plausible group.
+Moving into next size of datasets which is 5 million, the acceptance of all the original plausible streamlines will be checked. 
+If a streamline from this group is rejected in any of the 5 million datasets, then it will be removed from the plausible group.
+Besides, the streamlines accepted by COMMIT in this round won't get into the plausible. The list of plausible streamlines will only be shorter after each round.
+The same rules are applied to the other rounds for the datasets of different sizes. In the end, the streamlines in the plausible group 
+are always accepted in all sizes of datasets. 
+
+Similarly, the iteration of implausible group starts from the results of the dataset of 10 million streamlines and keeps removing the 
+streamlines that are once accepted by COMMIT. And the list of implausible group also becomes shorter after each round.
+
+When the plausible and implausible streamlines are confirmed, the rest from the dataset of 10 million streamlines are labeled 
+as inconclusive streamlines. Finally, 10 million streamlines are divided into three groups as the pseudo ground truth for this study.
 
 \section{Deep Learning Streamline Classifier}
 rCOMMIT is purposed to extract plausible information from the filtering methods. To further investigate the different properties between groups and the potential

@@ -1,20 +1,25 @@
 \chapter{Results}
 
-The results will include three parts. 
-First, the performance of rCOMMIT will be visualized from different angles. Second, the performance of the models based on the 
-pseudo ground truth will be shown. Last, a comparison between the results from COMMIT and SIFT is conducted.
+The results include three parts of the study. 
+First, the performance of rCOMMIT on different subsets will be visualized and the pseudo ground truth based on 
+rCOMMIT is summarized for each subject.
+Second, the performance of the deep learning models trained on the pseudo ground truth will be shown. 
+As mentioned, similar study has been conducted with SIFT \cite{smithSIFTSphericaldeconvolutionInformed2013} on the same subjects.
+Last, this study makes a comparison between COMMIT and SIFT about the filtering results and the model performance. 
 
 \section{Performance of rCOMMIT}
 
-Fig \ref{fig:heatmap} shows the distribution of ARs in different subset sizes on three subjects, 
+Fig. \ref{fig:heatmap} and Fig. \ref{fig:ARplot} show the distribution of ARs in different subset sizes on three subjects, 
 and table \ref{table:cate} indicates the values and the ranges of categories in the figure. 
 
-Adding the distribution ratio in category 0 and 6, it shows that more than 50\% of the streamlines
-receive either 0\% AR or 100\% AR after rCOMMIT for all the subsets. For the data of 10 million size, all the streamlines
-are divided into category 0 and 6, so there is no value in the other groups. Because running COMMIT multiple times on the same data gives back the same results for each streamline. 
-When applying COMMIT to the smaller datasets, the ratio of streamlines from 
-category 1 to 5 increases. Meanwhile, the ratio of streamlines with AR = 100\% increases from 7.0\% to 28.5\%,
-while the streamlines with AR = 0\% decreases largely, from 93.4\% to 27.2\%.
+Summing up the distribution ratio in category 0 and 6, the result shows that more than 50\% of the streamlines
+are of either 0\% AR or 100\% AR after running rCOMMIT for all the subsets. For the tractograms of 10 million streamlines, all the streamlines
+are divided into category 0 and 6. 
+Besides, the filtering results from this size of tractograms are consistent.
+When applying COMMIT to the smaller datasets, the proportion of streamlines from 
+category 1 to 5 increases. Meanwhile, the proportion of streamlines with AR = 100\% increases from 7.0\% to 28.5\%,
+while the proportion of streamlines with AR = 0\% decreases largely, from 93.4\% to 27.2\%.
+The relationship between the ARs and the length is also analyzed in Fig. \ref{fig:ARplot}, which shows the same trends as Fig. \ref{fig:heatmap}.
 
 
 \begin{table}[]
@@ -27,18 +32,9 @@ while the streamlines with AR = 0\% decreases largely, from 93.4\% to 27.2\%.
     }
     \caption{The values and ranges of different acceptance rate categories. For category 0, the AR is 0\%.
     For category 6, the AR is 100\%. For the other categories, the ARs are classified by the ranges. These intervals 
-    do not include the lower bound and include the higher bound, except category 5 which exclues both 80\% and 100\%.}
+    do not include the lower bound and include the higher bound, except category 5 which excludes both 80\% and 100\%.}
     \label{table:cate}
 \end{table}
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width= 15cm]{figures/heatmap.png}
-        \caption{The distribution of acceptance rates in different subset sizes. Each cell includes the mean ratio of 
-        the streamlines across subjects and the standard deviations in the parentheses. In the column of the 10 million data, there is no value from category 1 to 5.
-        }
-    \label{fig:heatmap}
-\end{figure}
 
 \begin{figure}[ht]
     \centering
@@ -49,7 +45,27 @@ while the streamlines with AR = 0\% decreases largely, from 93.4\% to 27.2\%.
     \label{fig:ARplot}
 \end{figure}
 
-\subsection{Pseudo Ground Truth}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width= 13cm]{figures/heatmap.png}
+        \caption{The distribution of acceptance rates in different subset sizes. Each cell includes the mean ratio of 
+        the streamlines across subjects and the standard deviations in the parentheses. In the column of the 10 million data, there is no value from category 1 to 5.
+        }
+    \label{fig:heatmap}
+\end{figure}
+
+The distribution of results between normal COMMIT and rCOMMIT are shown in Fig. \ref{fig:ori_distri} and Fig. \ref{fig:threegroup}.
+As shown in the Fig. \ref{fig:ori_distri}, only a small amount of streamlines is kept by COMMIT. As shown in the Fig. \ref{fig:threegroup}, the rCOMMIT influences the distribution of the streamlines and the remaining 
+streamlines are mostly among the short ones. The length of rejected streamlines is of higher variety. The distribution of inconclusive streamlines
+is similar to the distribution of the input data.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width= 15cm]{figures/distributon_origi.png}
+        \caption{The distribution of streamlines from one exemplary subject filtered by COMMIT. COMMIT is applied on the raw data of 10 million streamlines, which are 
+        divided into two groups: rejected and accepted groups.}
+    \label{fig:ori_distri}
+\end{figure}
 
 \begin{figure}[ht]
     \centering
@@ -57,6 +73,10 @@ while the streamlines with AR = 0\% decreases largely, from 93.4\% to 27.2\%.
         \caption{The distribution of streamlines from one exemplary subject with respect to the length in three groups: plausible group, implausible group and inconclusive group. }
     \label{fig:threegroup}
 \end{figure}
+
+
+With the AR assessments from each size of data, a pseudo ground truth for the subject can be extracted.
+
 
 \section{Model Classification}
 
