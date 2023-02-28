@@ -9,8 +9,8 @@ Last, this study makes a comparison between COMMIT and SIFT about the filtering 
 
 \section{Performance of rCOMMIT}
 
-Fig. \ref{fig:heatmap} and Fig. \ref{fig:ARplot} show the distribution of ARs in different subset sizes on three subjects, 
-and table \ref{table:cate} indicates the values and the ranges of categories in the figure. 
+Fig. \ref{fig:ARplot} and Fig. \ref{fig:heatmap} show the distribution of ARs in different subset sizes on three subjects, 
+and table \ref{table:cate} indicates the values and the ranges of categories. 
 Summing up the proportion in category 0 and 6, the result shows that more than 50\% of the streamlines
 are of either 0\% AR or 100\% AR after running rCOMMIT for all the subsets. For the tractograms of 10 million streamlines, all the streamlines
 are divided into category 0 and 6. 
@@ -61,7 +61,7 @@ The relationship between the ARs and the length is also analyzed in Fig. \ref{fi
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width= 12cm]{figures/heatmap.png}
+    \includegraphics[width= 12cm]{figures/heatmap_new.png}
         \caption{The distribution of acceptance rates in different subset sizes. Each cell includes the mean ratio of 
         the streamlines across subjects and the standard deviations in the parentheses. In the column of the 10 million data, there is no value from category 1 to 5.
         }
@@ -84,10 +84,9 @@ is similar to the distribution of the input data.
 \begin{figure}[ht]
     \centering
     \includegraphics[width= 12cm]{figures/three_groups_hist.png}
-        \caption{The distribution of streamlines from one exemplary subject with respect to the length in three groups: plausible group, implausible group and inconclusive group. }
+        \caption{The distribution of streamlines from one exemplary subject after rCOMMIT with respect to the length in three groups: plausible group, implausible group and inconclusive group. }
     \label{fig:threegroup}
 \end{figure}
-
 
 With the AR assessments from each size of data, 
 the pseudo ground truth for the subjects can be extracted, which is shown in the Table \ref{table:pgt}.
@@ -116,18 +115,15 @@ the pseudo ground truth for the subjects can be extracted, which is shown in the
 
 \section{Comparison Between rCOMMIT and rSIFT}
 
+With the results from the study of rSIFT, comparisons between rCOMMIT and rSIFT are made in this study. 
 
-
-\section{Classifier Performance}
-\subsection{Performance based on rCOMMIT}
-\subsection{Performance based on rCOMMIT and rSIFT}
-
-
-
-
+First, the distribution of streamlines of three subjects in different groups are compared in Table \ref*{table:plaus} and \ref*{table:implaus}.
+Overall, the scale of implausible groups from both methods is larger than the plausible groups.
+In Table \ref*{table:plaus}, the numbers of plausible streamlines extracted by rSIFT are significantly lower than those from rCOMMIT.
+While in Table \ref*{table:implaus}, the numbers of implausible streamlines extracted by rSIFT are much higher than those from rCOMMIT.
 \begin{table}[!ht]
     \centering
-    \caption{ }
+    \caption{The number of streamlines in plausible group of the same subjects between rCOMMIT and rSIFT.}
     ~\\
     \label{table:plaus}
     \begin{tabular}{p{3cm}|p{3cm}|p{3cm}|p{3cm}}
@@ -145,10 +141,9 @@ the pseudo ground truth for the subjects can be extracted, which is shown in the
     \end{tabular}
 \end{table}
 
-
 \begin{table}[!ht]
     \centering
-    \caption{ }
+    \caption{The number of streamlines in implausible group of the same subjects between rCOMMIT and rSIFT.}
     ~\\
     \label{table:implaus}
     \begin{tabular}{p{3cm}|p{3cm}|p{3cm}|p{3cm}}
@@ -166,14 +161,36 @@ the pseudo ground truth for the subjects can be extracted, which is shown in the
     \end{tabular}
 \end{table}
 
+Second, with the results from both methods on the same subjects, the comparison on the intersection between two sets of pseudo ground truths
+is conducted. The Intersection parts in both plausible and implausible groups indicate a portion of streamlines that obtain the 
+same and consistent results from COMMIT and SIFT. The Fig. \ref*{fig:com_s_c} shows the intersection of streamlines from one subjeect in both plausible 
+and implausible groups from rCOMMIT and rSIFT. 
+The figure on the left represents plausible groups, the values inside the circle are the proportion of each set
+according to the original size which is 10 million. Plausible groups in both methods are not big, but the intersection part
+takes a significant proportion with the respect to both plausible groups. For the implausible groups, the intersection takes a great amount in both sides. 
+And it shows most of the implausible streamlines from rCOMMIT are also recognized by rSIFT as implausible.
 
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width= 12cm]{figures/comp_s_c.png}
-        \caption{The distribution of streamlines from one exemplary subject with respect to the length in three groups: plausible group, implausible group and inconclusive group. }
+        \caption{The venn diagrams of the plausible groups and implausible groups from rCOMMIT and rSIFT.}
     \label{fig:com_s_c}
 \end{figure}
 
+Last, to investigate the relationship between the distribution and the length of streamlines in rSIFT, an exemplary 
+pseudo ground truth from rSIFT is visualized in Fig. \ref*{fig:threegroup_sift}. Similar to the numerical results,
+the proportion of implausible streamlines is much higher than the plausible group. Besides, the plausible group is also of lower variety in length.
+Unlike rCOMMIT, the proportion of implausible groups seems to largely decrease.
 
+\begin{figure}[ht]
+    \includegraphics[width= 12cm]{figures/distribution_sift.png}
+    \caption{The distribution of streamlines from one exemplary subject after rSIFT. }
+\label{fig:threegroup_sift}
+\end{figure}
+
+
+\section{Classifier Performance}
+\subsection{Performance based on rCOMMIT}
+\subsection{Performance based on rCOMMIT and rSIFT}
 Describe the results of the degree project.
