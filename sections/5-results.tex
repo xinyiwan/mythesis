@@ -117,7 +117,20 @@ the pseudo ground truth for the subjects can be extracted, which is shown in the
 
 With the results from the study of rSIFT, comparisons between rCOMMIT and rSIFT are made in this study. 
 
-First, the distribution of streamlines of three subjects in different groups are compared in Table \ref*{table:plaus} and \ref*{table:implaus}.
+First, an overview of the rSIFT \cite{hainAssessingStreamlinePlausibility2022} experiments is shown 
+in Fig. \ref{fig:heatmap_sift} from the previous study. It shows the similar trends in different subset sizes. 
+
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width= 12cm]{figures/table_rsift.png}
+        \caption{The distribution of acceptance rates in different subset sizes in rSIFT \cite{hainAssessingStreamlinePlausibility2022}.
+        }
+    \label{fig:heatmap_sift}
+\end{figure}
+
+
+Second, the distribution of streamlines of three subjects in different groups are compared in Table \ref*{table:plaus} and \ref*{table:implaus}.
 Overall, the scale of implausible groups from both methods is larger than the plausible groups.
 In Table \ref*{table:plaus}, the numbers of plausible streamlines extracted by rSIFT are significantly lower than those from rCOMMIT.
 While in Table \ref*{table:implaus}, the numbers of implausible streamlines extracted by rSIFT are much higher than those from rCOMMIT.
@@ -161,7 +174,7 @@ While in Table \ref*{table:implaus}, the numbers of implausible streamlines extr
     \end{tabular}
 \end{table}
 
-Second, with the results from both methods on the same subjects, the comparison on the intersection between two sets of pseudo ground truths
+Third, with the results from both methods on the same subjects, the comparison on the intersection between two sets of pseudo ground truths
 is conducted. The Intersection parts in both plausible and implausible groups indicate a portion of streamlines that obtain the 
 same and consistent results from COMMIT and SIFT. The Fig. \ref*{fig:com_s_c} shows the intersection of streamlines from one subjeect in both plausible 
 and implausible groups from rCOMMIT and rSIFT. 
@@ -184,13 +197,35 @@ the proportion of implausible streamlines is much higher than the plausible grou
 Unlike rCOMMIT, the proportion of implausible groups seems to largely decrease.
 
 \begin{figure}[ht]
+    \centering
     \includegraphics[width= 12cm]{figures/distribution_sift.png}
-    \caption{The distribution of streamlines from one exemplary subject after rSIFT. }
+    \caption{The distribution of streamlines from one exemplary subject after rSIFT \cite{hainAssessingStreamlinePlausibility2022}. }
 \label{fig:threegroup_sift}
 \end{figure}
 
 
 \section{Classifier Performance}
+Multiple classifiers are applied on the datasets from the experiments. The first part of classification result
+is based on the pseudo ground true from rCOMMIT. The second part exploits and combine the dataset 
+from both rCOMMIT and rSIFT.
 \subsection{Performance based on rCOMMIT}
-\subsection{Performance based on rCOMMIT and rSIFT}
-Describe the results of the degree project.
+
+An overview of the classifier performance is shown in Fig.
+
+
+
+\subsection{Performance based on the intersection between rCOMMIT and rSIFT}
+With the pseudo ground truths from both rCOMMIT and rSIFT, the intersection of both data is extracted and used as the new training data.
+An overview of the performance of the binary classifiers trained on it is shown in Fig. \ref{fig:inter_classifiers}.
+The accuracy of binary classifiers on plausible and implausible streamlines is higher than the accuracy of rCOMMIT binary classifiers.
+Meanwhile, the accuracy of the classifiers on plausible and inconclusive streamlines also increases.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width= 12cm]{figures/inter_classifiers.png}
+    \caption{The performance of binary classifiers based on the intersection data from rCOMMIT and rSIFT.
+    “P” represents “positive” (plausible),  “N” represents “negative” (implausible), and “I” inconclusive. 
+    The metrics are computed through the mean values as determined by 5-fold cross-validation (CV) in training or tests with unseen subjects during training, 
+    with standard deviations in parentheses.}
+\label{fig:inter_classifiers}
+\end{figure}
