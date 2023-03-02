@@ -13,14 +13,14 @@ The possible errors and limitations during
 the study are also discussed. Moreover, the future work of this project are discussed.
 
 \section{rCOMMIT}
-From the results in last section, COMMIT has shown that the same streamline can be accepted or rejected in different runs, which is 
+From the results in results section, COMMIT has shown that the same streamline can be accepted or rejected in different runs, which is 
 how the implausible group is defined in the study. This phenomenon indicates that the way COMMIT realizes filtering doesn't depend
-on the true anatomy of the streamlines. And the process of filtering tries to find a subset of streamlines that can improve 
+on the anatomy of each streamline. And the process of filtering tries to find a subset of streamlines that can improve 
 the consistency between tractogram and diffusion data with global optimization approach \cite{hainAssessingStreamlinePlausibility2022}.
 Instead of assessing an individual streamline, COMMIT tries to fit with all streamlines as input. 
 As shown in the results, with smaller input tractogram, the proportion of accepted streamlines gets higher 
 (7.0\% for the whole tractogram vs. 28.5\% for the smallest subset). From the whole tractogram to the smallest subset, the proportion of 
-the rejected streamlines changes from  93.4\% to 27.2\%. 
+the rejected streamlines decreases from  93.4\% to 27.2\%. 
 A possible explanation is that the smaller subsets might contain fewer redundant streamlines, so that the accepted proportion increases
 due to the lower base number. 
 
@@ -30,9 +30,9 @@ assessment on each streamline. The independence of the assessments comes from th
 Although the ground truth is still lacking for rCOMMIT, the classified streamlines from rCOMMIT are statistically plausible which avoid 
 the bias of size compared with COMMIT. 
 
-\section{Comparison Between COMMIT and SIFT}
+\section{Comparison Between rCOMMIT and rSIFT}
 
-From the results of rSIFT, we conclude that SIFT method in general is more strict in filtering than COMMIT. From the results, SIFT 
+Comparing the results from rSIFT with rCOMMIT, we conclude that SIFT method in general is more strict in filtering than COMMIT. From the results, SIFT 
 is prone to reject more streamlines when applying both methods on the same tractogram.  
 The difference from the filtering theories may explain this. 
 Both methods seek for a set of streamlines that could best describe the data. For COMMIT, the data to be reconstructed by the streamlines is measured diffusion data, while 
@@ -44,24 +44,59 @@ also possible that the solution reaches local minima instead of a global solutio
 From the venn diagrams, there is a big intersection between the implausible groups from rSIFT and rCOMMIT, 
 and most of the implausible streamlines from rCOMMIT are also included in by rSIFT. For the plausible 
 group, the rSIFT has a smaller group of streamlines. The proportion of the intersection to plausible groups is not 
-as big as the proportion of the implausible intersection. It indicates that although the theories of filtering differ from each other,
+as big as the proportion of the implausible intersection. Although the theories of filtering differ from each other,
 the results of implausible streamlines from both methods are largely overlapping. 
-The theories of methods may also explain this. The iterative and irreversible removal of streamlines in SIFT filters out more streamlines than COMMIT,
+The theories behind these methods may also explain it. The iterative and irreversible removal of streamlines in SIFT filters out more streamlines than COMMIT,
 and COMMIT computes the weight for each streamline which represents their contribution to the reconstruction of the diffusion signal. 
-The less plausible streamlines may of lower weight, but they can still be in the reconstruction, but these streamlines might be removed by SIFT.
+The less plausible streamlines may of lower weights, but they can still be in the reconstruction, but these streamlines might be removed by SIFT.
 
 
 \section{Classification}
 
+Neural networks are exploited for different classification tasks and to show the potential of deep learning methods in filtering.
+The binary classifiers trained on the plausible and implausible groups from rCOMMIT obtained an average accuracy of (XXX), which indicates the 
+structural differences between these two groups that can be learned by the neural networks. Since the whole process of rCOMMIT is very time-comsuming,
+the binary classifiers applied on the unknown subject also shows its ability in distinguishing plausible streamlines from the implausible ones.
+
+The binary classifiers trained on the plausible and implausible intersections between rCOMMIT and rSIFT show the even higher accuracy than
+the one trained on the pseudo ground truth from rCOMMIT. As mentioned, compared with their own groups, the proportion of the plausible intersection is not as big as the 
+implausible intersection. Because the performance of the classifiers is improved from the new training data, we conclude that within the same
+structure of the neural networks and hyperparameters there is greater difference between plausible and implausible intersections.
+Since the implausible intersection is very closed to the implausible group from rCOMMIT, the difference mainly comes from the plausible intersection.
+Based on this combined information from two methods, we conclude that the overlapping streamlines are likely to survive from filtering and be more plausible.
+
+When the classifiers based on the intersection data are applied on the unknown subject, ...  
+
+
 \section{Source of Error}
-For the higher acceptance in smaller subsets, the explanation indicates that the proportion of redundant streamlines might influence
-the acceptance. 
-However, the random sampling step 
+
+In the design of rCOMMIT, some drawbacks should be emphasized. The concept of AR helps classify the streamlines, but the 
+computation of the AR depends on the base number of runs by COMMIT for each streamline. 
+Although in each size level of subsets the streamlines are on average assessed by COMMIT 5 times, some streamlines still get fewer assessments,
+which might cause bias to the AR value. One possible solution is to choose the streamlines with 5 times assessments before
+generating the pseudo ground truth. It ensures that the ARs are computed with the same denominator, 
+but the total number of streamlines from the pseudo ground might differ between subjects.
+The second solution is increasing the sizes of subsets in the experiments, which will reduce the impact from the bias but not remove it.
+To assess this bias, a distribution of classification results from streamlines with 5 votes can help.
+
+
 
 
 \section{Future Work}
 
+This classifier built in this study shows the potential of DL methods, so it's promising to have applications 
+based on DL for filtering in the future. Also, there are some existing ground truths for some tractograms that 
+can be used for training. The time and computation of the filtering process can be improved by DL.   
 
+In addition, there is plenty of work can be addressed in improving the accuracy of the networks.
+For example, using more information about the structure of the streamlines to the network
+and trying different types of neural network are worthy to be studied. Since only the 1-D information of the 
+coordinates of sampling points are used in this study, more structural features from the input data might 
+help the network learn more about the anatomy of plausible streamlines.
+
+Besides COMMIT and SIFT, there are other filtering methods such as LiFE, SIFT2, COMMIT2 to be investigated.
+The difference and similarity between the methods are not very clear. Similar experiments can be conducted and 
+more information about filtering methods can help achieve better quality of tractograms for further research.
 
 
 
