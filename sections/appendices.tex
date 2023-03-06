@@ -343,16 +343,15 @@ is to define a distance metric between streamlines \cite*[]{ozarslanAnisotropyFi
 The method seems to be very straightforward, but it's not easy to find the best distance for all streamlines.
 
 
-\section{Deep Learning Methods}
-\subsection{Multilayer Perceptron (MLP)}
-
 \section{Structural Connectivity Networks}
 
-% \subsection{Brain connectivity}
-% As we know, brain is the main processor of human. 
-% It's a complex organ in charges of sense, motor motion, emotion, vision, breathing and
-% every process happening to human body.
-% Inside brain, neuron is the key unit that support brain to execute all the processes.
-% A neuron has three main parts: dendrites, an axon, and a cell body (soma).
+Structural connectivity networks are the models that describe the connections between regions inside the brain.
+While the individual streamline record the connection between two nodes, the brain connectivity networks recognize
+the global connectivity features of the brain. Different modalities can be used to construct brain connectivity, such as functional MRI,
+electroencephalography(EEG) and tractograms from dMRI.
 
-\subsection{Brain Connectivity Creation Pipeline}
+Connectivity networks can be analyzed as graphs. Since each connection can be regarded as an edge, and each node
+represents a region in the brain. The weight information can be assigned to each edge for showing the strength of the connectivity.
+Therefore, a matrix is proper to summarize the connectivity network and numerical analysis can be conducted.
+For the construction of the connectivity matrix based on tractograms, it's also essential to have a tractogram with high quality,
+which makes filtering process an important post-preprocessing step in between.

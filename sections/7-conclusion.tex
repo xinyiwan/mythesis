@@ -1,9 +1,18 @@
 \chapter{Conclusion}
 In this study, we proposed rCOMMIT as a method to study the performance of 
 filtering method COMMIT and give assessment on individual streamlines. 
-Additionally, the pseudo ground truth for the input data is generated with rCOMMIT, which 
-is used as training data for the deep learning-based classifiers.
-The classifiers are applied to binary and multi-classes classification tasks and 
+The results from the rCOMMIT shows the biases during the filtering and comfirm the 
+biased assessment on individual streamlines. 
+
+Additionally, the pseudo ground truth for the input data is generated with rCOMMIT,
+which divides the input streamlines into three groups (plausible, implausible, and inconclusive).
+Based on this data, deep learning-based classifiers are trained to distinguish different streamlines.
+The classifiers are applied to both binary and multi-classes classification tasks and 
 show the potential of deep learning method in filtering. 
-It learns the characteristics of different type of streamlines (plausible, implausible, and inconclusive) 
+It learns the characteristics of different type of streamlines 
 and speeds up the filtering process.  
+
+Moreover, with findings from the previous research on SIFT, comparisons between two filtering
+methods are conducted. The study shows that SIFT method is stricter in filtering than COMMIT.
+And the intersections between two methods improve the performance of classifiers, and reflect the difference
+between plausible groups from both methods. 
