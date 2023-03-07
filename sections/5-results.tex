@@ -212,6 +212,32 @@ from both rCOMMIT and rSIFT.
 
 An overview of the classifier performance is shown in Fig.
 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width= 12cm]{figures/rcommit_classifiers.png}
+    \caption{The performance of binary classifiers based on the pseudo ground truth from rCOMMIT.
+    “P” represents “positive” (plausible),  “N” represents “negative” (implausible), and “I” inconclusive. 
+    The metrics are computed through the mean values as determined by 3-fold cross-validation (CV) in training or tests with the unseen subject during training, 
+    with standard deviations in parentheses.}
+\label{fig:rcommit_classifiers}
+\end{figure}
+
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width= 12cm]{figures/multi_class.png}
+    \caption{The performance of multi-class classifiers based on the pseudo ground truth from rCOMMIT.
+    }
+\label{fig:rcommit_multi_classifiers}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width= 12cm]{figures/multi_class_critiaria.png}
+    \caption{The performance of multi-class classifiers based on the pseudo ground truth from rCOMMIT.
+    }
+\label{fig:multi_classifiers_critiaria}
+\end{figure}
 
 
 \subsection{Performance based on the intersection between rCOMMIT and rSIFT}
