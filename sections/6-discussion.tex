@@ -30,6 +30,14 @@ assessment on each streamline. The independence of the assessments comes from th
 Although the ground truth is still lacking for rCOMMIT, the classified streamlines from rCOMMIT are statistically plausible which avoid 
 the bias of size compared with COMMIT. 
 
+Besides, the bias on length during the filtering by COMMIT is also confirmed with this study.
+From the distribution of the number of streamlines with the respect to the length, it's obvious that 
+there is greater variety in the rejected streamlines by rCOMMIT than the accepted group. 
+This phenomenon is also found in SIFT that it tends to filter out longer streamlines.
+A guess on this problem is that the longer streamlines are prone to give more error during the optimization process
+to find the best set of streamlines. To reach the minima, these streamlines are more likely to be filtered. 
+However, from the current results, there isn't a very convincing explanation for it. 
+
 \section{Comparison Between rCOMMIT and rSIFT}
 
 Comparing the results from rSIFT with rCOMMIT, we conclude that SIFT method in general is more strict in filtering than COMMIT. From the results, SIFT 
@@ -66,6 +74,20 @@ Since the implausible intersection is very closed to the implausible group from 
 Based on this combined information from two methods, we conclude that the overlapping streamlines are likely to survive from filtering and be more plausible.
 
 % (to do) When the classifiers based on the intersection data are applied on the unknown subject, ...  
+
+The binary classifiers are also respectively trained on the plausible non-intersection groups and implausible non-intersection groups from both methods.
+We assume that the performance of classifiers can indirectly indicate the difference between the non-intersection parts.
+With the same hyperparameters and the structure, 
+the mean accuracy of the classifiers trained on the plausible non-intersection groups is higher than the other.
+It indicates that it's easier for the same model to learn the difference between the plausible non-intersection groups,
+so there might be a greater difference between the plausible streamlines that are chosen by two methods.
+However, from the venn diagrams show the difference in the amounts of streamlines in different groups which might
+also explain the performance of classifiers. 
+Because the implausible non-intersection group from rCOMMIT is rather small compared to the one from rSIFT.
+And the proportion between the two plausible non-intersection groups is relatively balanced.
+Although during the training the data generator is used to balance the two input classes, there still
+might be not enough various streamlines for the model to study. 
+In the end, we can't come to any conclusion about the difference in non-intersection groups.
 
 
 \section{Source of Error}

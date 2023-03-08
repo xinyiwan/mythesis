@@ -3,13 +3,13 @@
 The results include three parts of the study. 
 First, the performance of rCOMMIT on different subsets will be visualized and the pseudo ground truth based on 
 rCOMMIT is summarized for each subject.
-Second, the performance of the deep learning models trained on the pseudo ground truth will be shown. 
-As mentioned, similar study has been conducted with SIFT \cite{smithSIFTSphericaldeconvolutionInformed2013} on the same subjects.
+Second, the performance of the deep learning models trained on the pseudo ground truth will be displayed. 
+As mentioned, the similar study has been conducted with SIFT \cite{smithSIFTSphericaldeconvolutionInformed2013} on the same subjects.
 Last, this study makes a comparison between COMMIT and SIFT about the filtering results and the model performance. 
 
 \section{Performance of rCOMMIT}
 
-Fig. \ref{fig:ARplot} and Fig. \ref{fig:heatmap} show the distribution of ARs in different subset sizes on three subjects, 
+Fig \ref{fig:ARplot} and Fig \ref{fig:heatmap} show the distribution of ARs in different subset sizes on three subjects, 
 and table \ref{table:cate} indicates the values and the ranges of categories. 
 Summing up the proportion in category 0 and 6, the result shows that more than 50\% of the streamlines
 are of either 0\% AR or 100\% AR after running rCOMMIT for all the subsets. For the tractograms of 10 million streamlines, all the streamlines
@@ -19,7 +19,7 @@ Besides, the filtering results from this size of tractograms are consistent.
 When applying COMMIT to the smaller datasets, the proportion of streamlines from 
 category 1 to 5 increases. Meanwhile, the proportion of streamlines with AR = 100\% increases from 7.0\% to 28.5\%,
 while the proportion of streamlines with AR = 0\% decreases largely, from 93.4\% to 27.2\%.
-The relationship between the ARs and the length is also analyzed in Fig. \ref{fig:ARplot}, which shows the same trends as Fig. \ref{fig:heatmap}.
+The relationship between the ARs and the length is also analyzed in Fig \ref{fig:ARplot}, which shows the same trends as Fig \ref{fig:heatmap}.
 
 
 \begin{table}[!ht]
@@ -68,8 +68,8 @@ The relationship between the ARs and the length is also analyzed in Fig. \ref{fi
     \label{fig:heatmap}
 \end{figure}
 
-The distribution of results between normal COMMIT and rCOMMIT are shown in Fig. \ref{fig:ori_distri} and Fig. \ref{fig:threegroup}.
-As shown in the Fig. \ref{fig:ori_distri}, only a small amount of streamlines is kept by COMMIT. As shown in the Fig. \ref{fig:threegroup}, the rCOMMIT influences the distribution of the streamlines and the remaining 
+The distribution of results between normal COMMIT and rCOMMIT are shown in Fig \ref{fig:ori_distri} and Fig \ref{fig:threegroup}.
+As shown in the Fig \ref{fig:ori_distri}, only a small amount of streamlines is kept by COMMIT. As shown in the Fig \ref{fig:threegroup}, the rCOMMIT influences the distribution of the streamlines and the remaining 
 streamlines are mostly among the short ones. The length of rejected streamlines is of higher variety. The distribution of inconclusive streamlines
 is similar to the distribution of the input data.
 
@@ -117,8 +117,8 @@ the pseudo ground truth for the subjects can be extracted, which is shown in the
 
 With the results from the study of rSIFT, comparisons between rCOMMIT and rSIFT are made in this study. 
 
-First, an overview of the rSIFT \cite{hainAssessingStreamlinePlausibility2022} experiments is shown 
-in Fig. \ref{fig:heatmap_sift} from the previous study. It shows the similar trends in different subset sizes. 
+First, an overview of the rSIFT \cite{hainAssessingStreamlinePlausibility2022} experiments on the same dataset 
+is shown in Fig \ref{fig:heatmap_sift} from the previous study. It shows the similar trends in different subset sizes. 
 
 
 \begin{figure}[ht]
@@ -175,12 +175,14 @@ While in Table \ref*{table:implaus}, the numbers of implausible streamlines extr
 \end{table}
 
 Third, with the results from both methods on the same subjects, the comparison on the intersection between two sets of pseudo ground truths
-is conducted. The Intersection parts in both plausible and implausible groups indicate a portion of streamlines that obtain the 
-same and consistent results from COMMIT and SIFT. The Fig. \ref*{fig:com_s_c} shows the intersection of streamlines from one subjeect in both plausible 
+is conducted. The intersection parts in both plausible and implausible groups indicate a portion of streamlines that obtain the 
+same and consistent results from COMMIT and SIFT. The Fig \ref*{fig:com_s_c} shows the intersection of streamlines from one exemplary subject in both plausible 
 and implausible groups from rCOMMIT and rSIFT. 
-The figure on the left represents plausible groups, the values inside the circle are the proportion of each set
+The figure on the left represents plausible groups, the values inside the circle are the proportion values
 according to the original size which is 10 million. Plausible groups in both methods are not big, but the intersection part
-takes a significant proportion with the respect to both plausible groups. For the implausible groups, the intersection takes a great amount in both sides. 
+takes a significant proportion with the respect to both plausible groups. 
+The plausible intersection part is almost as big as the plausible non-intersection part from rCOMMIT.
+For the implausible groups, the intersection takes a great proportion in both sides. 
 And it shows most of the implausible streamlines from rCOMMIT are also recognized by rSIFT as implausible.
 
 
@@ -192,25 +194,31 @@ And it shows most of the implausible streamlines from rCOMMIT are also recognize
 \end{figure}
 
 Last, to investigate the relationship between the distribution and the length of streamlines in rSIFT, an exemplary 
-pseudo ground truth from rSIFT is visualized in Fig. \ref*{fig:threegroup_sift}. Similar to the numerical results,
+pseudo ground truth from rSIFT is visualized in Fig \ref*{fig:threegroup_sift}. Similar to the numerical results,
 the proportion of implausible streamlines is much higher than the plausible group. Besides, the plausible group is also of lower variety in length.
-Unlike rCOMMIT, the proportion of implausible groups seems to largely decrease.
+And the proportion of implausible groups in rSIFT largely increase compared with rCOMMIT.
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width= 12cm]{figures/distribution_sift.png}
-    \caption{The distribution of streamlines from one exemplary subject after rSIFT \cite{hainAssessingStreamlinePlausibility2022}. }
+    \caption{The distribution of streamlines of different length from one exemplary subject after rSIFT \cite{hainAssessingStreamlinePlausibility2022}. }
 \label{fig:threegroup_sift}
 \end{figure}
 
 
 \section{Classifier Performance}
 Multiple classifiers are applied on the datasets from the experiments. The first part of classification result
-is based on the pseudo ground true from rCOMMIT. The second part exploits and combine the dataset 
-from both rCOMMIT and rSIFT.
+is based on the pseudo ground truth from rCOMMIT. The second part exploits the intersection data from rCOMMIT and rSIFT.
 \subsection{Performance based on rCOMMIT}
 
-An overview of the classifier performance is shown in Fig.
+An overview of the classifier performance is shown in Fig \ref{fig:rcommit_classifiers}.
+The binary classifiers for the plausible and implausible groups show the average accuracy
+of $77\%$ on the validation folds. While the other two classifiers trained on the 
+plausible and the inconclusive groups, the implausible and the inconclusive groups are 
+of lower accuracies, which are respectively $64.9\%$ and $63.6\%$. 
+The classifiers trained on plausible and implausible groups are also applied on the unseen subject, 
+and the mean accuracy is of $76\%$ which is very closed to the accuracy in the cross validation during the training.
+
 
 \begin{figure}[ht]
     \centering
@@ -222,6 +230,13 @@ An overview of the classifier performance is shown in Fig.
 \label{fig:rcommit_classifiers}
 \end{figure}
 
+As mentioned, the multi-class classifiers are trained on the same pseudo ground truth.
+The performance is shown in the Fig \ref{fig:rcommit_multi_classifiers} and Fig \ref{fig:multi_classifiers_critiaria}.
+The "P","N" and "I" in the figures represent plausible, implausible and inconclusive groups.
+The multi-class classifiers show the ability to better distinguish plausible group from the others.
+And the accuracy for the implausible group is higher than for the inconclusive group. 
+From the last row of the confusion matrix, the main error of this classifier is between plausible and inconclusive groups.
+The accuracies for different groups are summarized in Fig \ref{fig:multi_classifiers_critiaria}.
 
 \begin{figure}[ht]
     \centering
@@ -235,23 +250,48 @@ An overview of the classifier performance is shown in Fig.
     \centering
     \includegraphics[width= 12cm]{figures/multi_class_critiaria.png}
     \caption{The performance of multi-class classifiers based on the pseudo ground truth from rCOMMIT.
-    }
+    “N” stands for “negative” (implausible), “P” “positive” (plausible) and “I” inconclusive. 
+    TPR = true positive rate, TNR = true negative rate, TIR = true inconclusive rate.}
 \label{fig:multi_classifiers_critiaria}
 \end{figure}
 
 
 \subsection{Performance based on the intersection between rCOMMIT and rSIFT}
 With the pseudo ground truths from both rCOMMIT and rSIFT, the intersection of both data is extracted and used as the new training data.
-An overview of the performance of the binary classifiers trained on it is shown in Fig. \ref{fig:inter_classifiers}.
-The accuracy of binary classifiers on plausible and implausible streamlines is higher than the accuracy of rCOMMIT binary classifiers.
-Meanwhile, the accuracy of the classifiers on plausible and inconclusive streamlines also increases.
+An overview of the performance of the binary classifiers trained on it is shown in Fig \ref{fig:inter_classifiers}.
+The accuracy of binary classifiers trained on the intersection data is higher than the accuracy of the binary classifiers trained on the rCOMMIT results,
+which are respectively $87.4\%$ and $77.0\%$. 
+Meanwhile, compared with the accuracy of the binary classifiers trained on plausible and inconclusive streamlines from rCOMMIT,
+the accuracy of the intersection classifiers is also higher than before.
+For the implausible and inconclusive groups, the accuracies of classifiers are basically unchanged. 
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width= 12cm]{figures/inter_classifiers.png}
     \caption{The performance of binary classifiers based on the intersection data from rCOMMIT and rSIFT.
-    “P” represents “positive” (plausible),  “N” represents “negative” (implausible), and “I” inconclusive. 
-    The metrics are computed through the mean values as determined by 5-fold cross-validation (CV) in training or tests with unseen subjects during training, 
+    The metrics are computed through the mean values as determined by 3-fold cross-validation (CV) in training or tests with the unseen subject during training, 
     with standard deviations in parentheses.}
 \label{fig:inter_classifiers}
+\end{figure}
+
+In addition, the binary classifiers are trained on the non-intersection groups from rCOMMIT and rSIFT.
+The binary classifiers trained on the intersection data show the good performance in binary classification.
+However, the difference between the non-intersection streamlines from both methods is unknown.
+To investigate the difference between these two groups, the binary classifier is trained on the non-intersection data.
+The plausible streamlines from rCOMMIT and rSIFT which are not in the intersection are labeled as 
+negative and positive, and the binary classifiers of the same architecture are trained with the same hyperparameters. 
+
+The performance of the binary classifiers is shown in Fig \ref{fig:inter_classifiers_tf}.
+The 'P' stands for the plausible groups, so rCOMMIT - P represents the plausible streamlines out of the intersection and same for the rSIFT - P. 
+The 'N' stands for the implausible groups out of the intersections from both methods.
+As shown, the mean accuracy, sensitivity and specificity of the classifiers from cross validation of plausible groups are higher than those the implausible groups.
+
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width= 12cm]{figures/inter_tf_classifiers.png}
+    \caption{The performance of binary classifiers based on the non-intersection groups.
+    The performance of classifiers in the first row is trained on the non-intersection plausible groups from rCOMMIT and rSIFT.
+    While the second row is trained on the non-intersection implausible groups from rCOMMIT and rSIFT.}
+\label{fig:inter_classifiers_tf}
 \end{figure}
