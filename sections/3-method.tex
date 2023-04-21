@@ -209,6 +209,18 @@ The batch size is defined to be 60, so it is flexible with two classes and three
 The epoch size is defined by the larger class and each sub-batch from this class will be seen at least once.
 While the sub-batch from the smaller class will be reused and shuffled when it is exhausted during an epoch.
 
+\subsection{Model Training}
+
+As mentioned, three subjects from the Human Connectome Project \cite{vanessenWUMinnHumanConnectome2013} are used in this study.
+Two subjects are used in training and validation, and another subject is used for testing. Every tractogram from three subjects is of 10 million streamlines.
+
+The training of all classifiers is performed with a 3-fold cross-validation method. The datasets are split into three folds and a mask for the dataset is 
+implemented to shelter the chosen fold. A monitored metric, validation accuracy, is used to stop the training automatically, which could terminate the process earlier when reaching a stable performance.
+The learning rate during the training is set to be $0.001$. And the parameters set for the monitored metric and learning rate come from several tests before the training.
+
+During the testing, the full tractogram of an unseen subject is used as input data. 
+A 3-fold cross-validation method is applied during the testing as well.
+The limitation about the amount of the subjects will be discussed in Chapter 4.
 
 
 

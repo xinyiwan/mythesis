@@ -299,7 +299,7 @@ it is possible to find a minimum for $\eta$.
 SIFT \cite*{smithSIFTSphericaldeconvolutionInformed2013} and SIFT2 \cite*{smithSIFT2EnablingDense2015} share the same idea of explainability,
 but their purpose is not to synthesize raw dMRI data with the best combination of streamlines. 
 Instead, they focus on removing the less relevant streamlines for better fitting raw data.
-Specificlly, the algorithms remove streamlines iteratively to find the minimal sets of streamlines.
+Specifically, the algorithms remove streamlines iteratively to find the minimal sets of streamlines.
 However, the removed streamlines won't come back to the results, which means this method can run into local minima.
 Another difference of SIFT from the other methods is that it only generate binary labels of streamlines.
 
@@ -341,6 +341,25 @@ From the view of analysis, small bundles that contribute little to the connectiv
 So the only requirement for using standard clustering algorithms for streamline clustering 
 is to define a distance metric between streamlines \cite*[]{ozarslanAnisotropyFieldsScales2021}.
 The method seems to be very straightforward, but it's not easy to find the best distance for all streamlines.
+
+\subsection{Randomized SIFT(rSIFT)}
+
+Filtering methods have been widely used to improve the quality of tractograms. However, due to the intrinsic problem of filtering, the results remain biases.
+
+SIFT is a popular filtering method. To investigate the performance of SIFT, a method named randomized SIFT has been purposed. 
+This section will introduce the main ideas of rSIFT, which provides insights into our performance study about COMMIT.
+
+First, SIFT aims to remove the faulty connections from the tractograms. It exploits a global optimization approach to improve the agreement between the tractogram and the diffusion raw data.
+Therefore, the plausibility of single streamline won't be judged by SIFT since the result from SIFT is a global solution. Meanwhile, the results depend on the size and composition of the input tractogram.
+
+To provide assessment to each streamline, rSIFT makes multiple times of SIFT running on randomly selected tractogram subsets. 
+So each streamline will receive one result from each running of SIFT. And after the execution of rSIFT, each streamline is of multiple results, 
+which means it's possible to distinguish the streamlines with only consistent results. These streamlines with consistent results are either accepted or rejected by SIFT.
+Last, these streamlines are labeled based on the results and used as pseudo ground truth.
+
+The experiment with rSIFT managed to classify all the streamlines. The results from rSIFT are further used as pseudo ground truth to train a simple convolutional neural network and achieve decent performance,
+which also shows the difference between these streamlines learned by the neural network.
+Our study follows the idea of rSIFT and designs the similar experiment with filtering method COMMIT. 
 
 
 \section{Structural Connectivity Networks}
