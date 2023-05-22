@@ -211,7 +211,7 @@ Multiple classifiers are applied on the datasets from the experiments. The first
 is based on the pseudo ground truth from rCOMMIT. The second part exploits the intersection data from rCOMMIT and rSIFT.
 \subsection{Performance based on rCOMMIT}
 
-An overview of the classifier performance is shown in Fig \ref{fig:rcommit_classifiers}.
+An overview of the classifier performance is shown in Table \ref{table:rcommit_classifiers}.
 The binary classifiers for the plausible and implausible groups show the average accuracy
 of $77\%$ on the validation folds. While the other two classifiers trained on the 
 plausible and the inconclusive groups, the implausible and the inconclusive groups are 
@@ -220,23 +220,56 @@ The classifiers trained on plausible and implausible groups are also applied on 
 and the mean accuracy is of $76\%$ which is very closed to the accuracy in the cross validation during the training.
 
 
-\begin{figure}[ht]
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[width= 12cm]{figures/rcommit_classifiers.png}
+%     \caption{The performance of binary classifiers based on the pseudo ground truth from rCOMMIT.
+%     “P” represents “positive” (plausible),  “N” represents “negative” (implausible), and “I” inconclusive. 
+%     The metrics are computed through the mean values as determined by 3-fold cross-validation (CV) in training or tests with the unseen subject during training, 
+%     with standard deviations in parentheses.}
+% \label{fig:rcommit_classifiers}
+% \end{figure}
+
+\begin{table}[!ht]
     \centering
-    \includegraphics[width= 12cm]{figures/rcommit_classifiers.png}
     \caption{The performance of binary classifiers based on the pseudo ground truth from rCOMMIT.
     “P” represents “positive” (plausible),  “N” represents “negative” (implausible), and “I” inconclusive. 
-    The metrics are computed through the mean values as determined by 3-fold cross-validation (CV) in training or tests with the unseen subject during training, 
-    with standard deviations in parentheses.}
-\label{fig:rcommit_classifiers}
-\end{figure}
+    The metrics are computed through the mean values as determined by 3-fold cross-validation (CV) in training or tests with the unseen subject during training
+    with standard deviations.}
+    ~\\
+    \label{table:rcommit_classifiers}
+    \begin{tabular}{p{4cm}|p{2.5cm}|p{2cm}|p{2cm}|p{2cm}}
+    \toprule
+    \multicolumn{5}{c}{\textbf{The performance of classifiers based on rCOMMIT}} \\
+    \toprule
+    Groups & Performance & Accuracy & Sensitivity & Specificity \\
+    \hline
+    \multirow{2}*{\makecell{N vs. P (CV)}} & Mean & 77.0\% & 77.9\% & 76.4\% \\
+    \cline{2-5}
+            & Std & 0.5\%    & 0.5\%       & 1.9\% \\
+    \hline
+    \multirow{2}*{\makecell{I vs. P (CV)}} & Mean & 64.9\% & 66.5\% & 63.7\% \\
+    \cline{2-5}
+            & Std & 1.1\%    & 5.4\%      & 6.5\% \\
+    \hline
+    \multirow{2}*{\makecell{N vs. I (CV)}} & Mean & 63.6\% & 65.7\% & 61.9\% \\
+    \cline{2-5}
+            & Std & 1.2\%    & 5.6\%      & 4.2\% \\
+    \hline
+    \multirow{2}*{\makecell{N vs. P (CV) \\Unseen Subject}} & Mean & 76.0\% & 70.4\% & 77.6\% \\
+    \cline{2-5}
+            & Std & 1.5\%    & 2.8\%      & 2.6\% \\
+    \bottomrule
+    \end{tabular}
+\end{table}
 
 As mentioned, the multi-class classifiers are trained on the same pseudo ground truth.
-The performance is shown in the Fig \ref{fig:rcommit_multi_classifiers} and Fig \ref{fig:multi_classifiers_critiaria}.
+The performance is shown in the Fig \ref{fig:rcommit_multi_classifiers} and Table \ref{table:multi_classifiers_critiaria}.
 The "P","N" and "I" in the figures represent plausible, implausible and inconclusive groups.
 The multi-class classifiers show the ability to better distinguish plausible group from the others.
 And the accuracy for the implausible group is higher than for the inconclusive group. 
 From the last row of the confusion matrix, the main error of this classifier is between plausible and inconclusive groups.
-The accuracies for different groups are summarized in Fig \ref{fig:multi_classifiers_critiaria}.
+The accuracies for different groups are summarized in Table \ref{table:multi_classifiers_critiaria}.
 
 \begin{figure}[ht]
     \centering
@@ -246,33 +279,86 @@ The accuracies for different groups are summarized in Fig \ref{fig:multi_classif
 \label{fig:rcommit_multi_classifiers}
 \end{figure}
 
-\begin{figure}[ht]
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[width= 12cm]{figures/multi_class_critiaria.png}
+%     \caption{The performance of multi-class classifiers based on the pseudo ground truth from rCOMMIT.
+%     “N” stands for “negative” (implausible), “P” “positive” (plausible) and “I” inconclusive. 
+%     TPR = true positive rate, TNR = true negative rate, TIR = true inconclusive rate.}
+% \label{fig:multi_classifiers_critiaria}
+% \end{figure}
+
+
+\begin{table}[!ht]
     \centering
-    \includegraphics[width= 12cm]{figures/multi_class_critiaria.png}
     \caption{The performance of multi-class classifiers based on the pseudo ground truth from rCOMMIT.
     “N” stands for “negative” (implausible), “P” “positive” (plausible) and “I” inconclusive. 
     TPR = true positive rate, TNR = true negative rate, TIR = true inconclusive rate.}
-\label{fig:multi_classifiers_critiaria}
-\end{figure}
-
+    ~\\
+    \label{table:multi_classifiers_critiaria}
+    \begin{tabular}{p{4cm}|p{2.5cm}|p{2cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}}
+    \toprule
+    \multicolumn{6}{c}{\textbf{The performance of multi-class classifiers based on rCOMMIT}} \\
+    \toprule
+    Groups & Performance & Accuracy & TPR & TNR & TIR \\
+    \hline
+    \multirow{2}*{\makecell{P vs. N vs. I (CV)}} & Mean & 52.3\% & 69.9\% & 49.2\% & 30.7\% \\
+    \cline{2-6}
+            & Std & 0.6\%    & 1.5\%       & 3.3\%  & 1.9\% \\
+    \bottomrule
+    \end{tabular}
+\end{table}
 
 \subsection{Performance based on the intersection between rCOMMIT and rSIFT}
 With the pseudo ground truths from both rCOMMIT and rSIFT, the intersection of both data is extracted and used as the new training data.
-An overview of the performance of the binary classifiers trained on it is shown in Fig \ref{fig:inter_classifiers}.
+An overview of the performance of the binary classifiers trained on it is shown in Table \ref{table:inter_classifiers}.
 The accuracy of binary classifiers trained on the intersection data is higher than the accuracy of the binary classifiers trained on the rCOMMIT results,
 which are respectively $87.4\%$ and $77.0\%$. 
 Meanwhile, compared with the accuracy of the binary classifiers trained on plausible and inconclusive streamlines from rCOMMIT,
 the accuracy of the intersection classifiers is also higher than before.
 For the implausible and inconclusive groups, the accuracies of classifiers are basically unchanged. 
 
-\begin{figure}[ht]
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[width= 12cm]{figures/inter_classifiers.png}
+%     \caption{The performance of binary classifiers based on the intersection data from rCOMMIT and rSIFT.
+%     The metrics are computed through the mean values as determined by 3-fold cross-validation (CV) in training or tests with the unseen subject during training, 
+%     with standard deviations in parentheses.}
+% \label{fig:inter_classifiers}
+% \end{figure}
+
+
+\begin{table}[!ht]
     \centering
-    \includegraphics[width= 12cm]{figures/inter_classifiers.png}
     \caption{The performance of binary classifiers based on the intersection data from rCOMMIT and rSIFT.
-    The metrics are computed through the mean values as determined by 3-fold cross-validation (CV) in training or tests with the unseen subject during training, 
-    with standard deviations in parentheses.}
-\label{fig:inter_classifiers}
-\end{figure}
+         The metrics are computed through the mean values as determined by 3-fold cross-validation (CV) in training or tests with the unseen subject during training 
+         with standard deviations.}
+    ~\\
+    \label{table:inter_classifiers}
+    \begin{tabular}{p{4cm}|p{2.5cm}|p{2cm}|p{2cm}|p{2cm}}
+    \toprule
+    \multicolumn{5}{c}{\textbf{The performance of classifiers based on intersection data}} \\
+    \toprule
+    Groups & Performance & Accuracy & Sensitivity & Specificity \\
+    \hline
+    \multirow{2}*{\makecell{N vs. P (CV)}} & Mean & 87.4\% & 86.7\% & 87.8\% \\
+    \cline{2-5}
+            & Std & 0.8\%    & 1.2\%       & 1.0\% \\
+    \hline
+    \multirow{2}*{\makecell{I vs. P (CV)}} & Mean & 76.4\% & 77.3\% & 75.9\% \\
+    \cline{2-5}
+            & Std & 1.5\%    & 2.1\%      & 4.0\% \\
+    \hline
+    \multirow{2}*{\makecell{N vs. I (CV)}} & Mean & 65.7\% & 65.3\% & 66.4\% \\
+    \cline{2-5}
+            & Std & 1.1\%    & 2.5\%      & 2.2\% \\
+    \hline
+    \multirow{2}*{\makecell{N vs. P \\Unseen Subject}} & Mean & 79.0\% & 88.6\% & 75.8\% \\
+    \cline{2-5}
+            & Std & 0.8\%    & 0.3\%      & 0.8\% \\
+    \bottomrule
+    \end{tabular}
+\end{table}
 
 In addition, the binary classifiers are trained on the non-intersection groups from rCOMMIT and rSIFT.
 The binary classifiers trained on the intersection data show the good performance in binary classification.
@@ -281,17 +367,43 @@ To investigate the difference between these two groups, the binary classifier is
 The plausible streamlines from rCOMMIT and rSIFT which are not in the intersection are labeled as 
 negative and positive, and the binary classifiers of the same architecture are trained with the same hyperparameters. 
 
-The performance of the binary classifiers is shown in Fig \ref{fig:inter_classifiers_tf}.
+The performance of the binary classifiers is shown in Table \ref{table:inter_classifiers_tf}.
 The 'P' stands for the plausible groups, so rCOMMIT - P represents the plausible streamlines out of the intersection and same for the rSIFT - P. 
 The 'N' stands for the implausible groups out of the intersections from both methods.
 As shown, the mean accuracy, sensitivity and specificity of the classifiers from cross validation of plausible groups are higher than those the implausible groups.
 
 
-\begin{figure}[ht]
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[width= 12cm]{figures/inter_tf_classifiers.png}
+%     \caption{The performance of binary classifiers based on the non-intersection groups.
+%     The performance of classifiers in the first row is trained on the non-intersection plausible groups from rCOMMIT and rSIFT.
+%     While the second row is trained on the non-intersection implausible groups from rCOMMIT and rSIFT.}
+% \label{fig:inter_classifiers_tf}
+% \end{figure}
+
+
+
+\begin{table}[!ht]
     \centering
-    \includegraphics[width= 12cm]{figures/inter_tf_classifiers.png}
     \caption{The performance of binary classifiers based on the non-intersection groups.
-    The performance of classifiers in the first row is trained on the non-intersection plausible groups from rCOMMIT and rSIFT.
-    While the second row is trained on the non-intersection implausible groups from rCOMMIT and rSIFT.}
-\label{fig:inter_classifiers_tf}
-\end{figure}
+    The performance of classifiers in the first two rows is trained on the non-intersection plausible groups from rCOMMIT and rSIFT.
+    While the second two rows are the performance of classifiers trained on the non-intersection implausible groups from rCOMMIT and rSIFT.}
+    ~\\
+    \label{table:inter_classifiers_tf}
+    \begin{tabular}{p{4cm}|p{2.5cm}|p{2cm}|p{2cm}|p{2cm}}
+    \toprule
+    \multicolumn{5}{c}{\textbf{The performance of classifiers based on non-intersection groups}} \\
+    \toprule
+    Groups & Performance & Accuracy & Sensitivity & Specificity \\
+    \hline
+    \multirow{2}*{\makecell{rCOMMIT - P  vs.\\rSIFT - P (CV)}} & Mean & 65.4\% & 63.5\% & 67.6\% \\
+    \cline{2-5}
+            & Std & 0.8\%    & 5.4\%       & 5.2\% \\
+    \hline
+    \multirow{2}*{\makecell{rCOMMIT - N  vs.\\rSIFT - N (CV)}} & Mean & 59.9\% & 60.0\% & 60.6\% \\
+    \cline{2-5}
+            & Std & 3.3\%    & 15.6\%      & 16.8\% \\
+    \bottomrule
+    \end{tabular}
+\end{table}
